@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nickeloadeon poc.Plugins", "Nickeloadeon poc.Plugins.csproj", "{9196B36E-305E-637B-6DB8-2D605953E9FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nickeloadeon poc", "Nickeloadeon poc.csproj", "{7A04A6BD-87D0-2A33-2FD3-FB360F7BC63A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9196B36E-305E-637B-6DB8-2D605953E9FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9196B36E-305E-637B-6DB8-2D605953E9FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9196B36E-305E-637B-6DB8-2D605953E9FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9196B36E-305E-637B-6DB8-2D605953E9FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A04A6BD-87D0-2A33-2FD3-FB360F7BC63A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A04A6BD-87D0-2A33-2FD3-FB360F7BC63A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A04A6BD-87D0-2A33-2FD3-FB360F7BC63A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A04A6BD-87D0-2A33-2FD3-FB360F7BC63A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
