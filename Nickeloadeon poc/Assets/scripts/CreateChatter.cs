@@ -26,7 +26,6 @@ public class CreateChatter : MonoBehaviour {
 
     public void createChatter()
     {
-        print(start_time + " " + Time.time);
         if (start_time < Time.time)
         {
             Instantiate(chatter, instantiateposition.transform.position, chatter.transform.rotation);
