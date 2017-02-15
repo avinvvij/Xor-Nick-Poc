@@ -81,6 +81,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FollowMonster.cs" />
     <Compile Include="Assets\scripts\ChatterKillMonster.cs" />
     <Compile Include="Assets\scripts\CollisionBullet.cs" />
     <Compile Include="Assets\scripts\CollisionCrate.cs" />
