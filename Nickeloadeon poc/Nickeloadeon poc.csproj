@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -67,11 +70,20 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -81,7 +93,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FollowMonster.cs" />
     <Compile Include="Assets\scripts\ChatterKillMonster.cs" />
     <Compile Include="Assets\scripts\CollisionBullet.cs" />
     <Compile Include="Assets\scripts\CollisionCrate.cs" />
@@ -90,6 +101,7 @@
     <Compile Include="Assets\scripts\CreateChatter.cs" />
     <Compile Include="Assets\scripts\CreateMonsters.cs" />
     <Compile Include="Assets\scripts\CreatePan.cs" />
+    <Compile Include="Assets\scripts\FollowMonster.cs" />
     <Compile Include="Assets\scripts\FollowTouch.cs" />
     <Compile Include="Assets\scripts\KillMonster.cs" />
     <Compile Include="Assets\scripts\ManageAnimationSpeed.cs" />
@@ -102,6 +114,7 @@
     <Compile Include="Assets\scripts\RotateGun.cs" />
     <Compile Include="Assets\scripts\RotateToPoint.cs" />
     <Compile Include="Assets\scripts\ShootBullet.cs" />
+    <Compile Include="Assets\scripts\TurnMonsterToFriend.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />

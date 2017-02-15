@@ -19,6 +19,7 @@ public class PanController : MonoBehaviour {
     
     public void pananimationdone()
     {
+        iTween.ShakePosition(Camera.main.gameObject, new Vector3(1f, 1f, 1f), 0.1f);
         Destroy(gameObject);
     }
 
