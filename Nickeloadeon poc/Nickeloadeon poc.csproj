@@ -103,7 +103,9 @@
     <Compile Include="Assets\scripts\MonsterMove.cs" />
     <Compile Include="Assets\scripts\MoveOnPath.cs" />
     <Compile Include="Assets\scripts\PanController.cs" />
+    <Compile Include="Assets\scripts\ParticleController.cs" />
     <Compile Include="Assets\scripts\PathEditor.cs" />
+    <Compile Include="Assets\scripts\PuddleController.cs" />
     <Compile Include="Assets\scripts\RotateBulet.cs" />
     <Compile Include="Assets\scripts\RotateGun.cs" />
     <Compile Include="Assets\scripts\RotateToPoint.cs" />

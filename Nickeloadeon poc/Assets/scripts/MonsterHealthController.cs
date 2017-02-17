@@ -6,6 +6,7 @@ public class MonsterHealthController : MonoBehaviour {
 
     public int health = 10;
     Animator animation_handler;
+    public GameObject blood_puddle;
 
 	
 	void Start () {
@@ -16,6 +17,7 @@ public class MonsterHealthController : MonoBehaviour {
 	void Update () {
         if (this.health <= 0)
         {
+            Instantiate(blood_puddle, gameObject.transform.position - new Vector3(0f,2f,0f) , Quaternion.Euler(90f , 0f, 0f));
             Destroy(gameObject);
         }
     }
