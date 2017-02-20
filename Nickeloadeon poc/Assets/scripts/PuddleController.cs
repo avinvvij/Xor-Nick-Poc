@@ -7,7 +7,7 @@ public class PuddleController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         iTween.ScaleTo(gameObject, new Vector3(0f, 0f, 0f), 25f);
-        Invoke("destroySelf", 3f);
+        Invoke("destroySelf", 0.5f);
 	}
 
     public void destroySelf()

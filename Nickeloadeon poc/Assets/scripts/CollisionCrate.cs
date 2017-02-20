@@ -12,12 +12,16 @@ public class CollisionCrate : MonoBehaviour {
         {
             //print("collided to crate");
             //we need to stop the monster here
-            gameObject.GetComponent<MonsterMove>().enabled = false;
+            if(gameObject.GetComponent<FlyingMonsterPath>() != null)
+            {
+                gameObject.GetComponent<FlyingMonsterPath>().enabled = false;
+            }
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             gameObject.GetComponent<Rigidbody>().drag = 1000f;
             Animator anim = gameObject.transform.GetChild(0).GetComponent<Animator>();
             anim.SetBool("attack", true);
             collisiontocrate = true;
+            
         }
     }
 

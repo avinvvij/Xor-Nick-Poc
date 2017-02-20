@@ -13,10 +13,14 @@ public class CollisionMonster : MonoBehaviour {
     {
         if(triggered && !other && forceadded == false)
         {
-            gameObject.GetComponent<MonsterMove>().enabled = true;
+            if (gameObject.GetComponent<MonsterMove>() != null)
+                gameObject.GetComponent<MonsterMove>().enabled = true;
             Rigidbody rb = gameObject.GetComponent<Rigidbody>();
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * gameObject.GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
+            if (gameObject.GetComponent<MonsterMove>() != null)
+                rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * gameObject.GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
+            else
+                rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * -2f, ForceMode.Impulse);
             forceadded = true;
             triggered = false;
             count = 0;
@@ -25,11 +29,12 @@ public class CollisionMonster : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "monster" && triggered == false)
+        if (other.gameObject.tag == "monster" && triggered == false )
         {
-            if (count >= 2)
+            if (count >= 3)
             {
-                gameObject.GetComponent<MonsterMove>().enabled = false;
+                if (gameObject.GetComponent<MonsterMove>() != null)
+                    gameObject.GetComponent<MonsterMove>().enabled = false;
                 gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 triggered = true;
                 forceadded = false;
@@ -42,7 +47,8 @@ public class CollisionMonster : MonoBehaviour {
                 if (other.gameObject.transform.position.z < gameObject.transform.position.z)
                 {
                     this.other = other;
-                    gameObject.GetComponent<MonsterMove>().enabled = false;
+                    if (gameObject.GetComponent<MonsterMove>() != null)
+                        gameObject.GetComponent<MonsterMove>().enabled = false;
                     gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                     triggered = true;
                     forceadded = false;
@@ -83,10 +89,15 @@ public class CollisionMonster : MonoBehaviour {
     {
         if (forceadded == false)
         {
-            gameObject.GetComponent<MonsterMove>().enabled = true;
+            if(gameObject.GetComponent<MonsterMove>() != null)
+                gameObject.GetComponent<MonsterMove>().enabled = true;
             Rigidbody rb = gameObject.GetComponent<Rigidbody>();
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * gameObject.GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
+            if (gameObject.GetComponent<MonsterMove>() != null)
+                rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * gameObject.GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
+            else
+                rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * -2f, ForceMode.Impulse);
+
             forceadded = true;
             triggered = false;
         }

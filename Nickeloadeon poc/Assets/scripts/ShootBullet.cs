@@ -9,10 +9,12 @@ public class ShootBullet : MonoBehaviour {
     bool canshoot = true;
     public float bulletspeed = -10f , bulletcreatetime = 0.55f;
     Ray shootray;
+    GameObject tank_smoke;
 
 
     // Use this for initialization
     void Start () {
+        tank_smoke = transform.GetChild(0).transform.GetChild(0).gameObject;
         ht = new Hashtable();
         ht.Add("z", gameObject.transform.position.z + 0.3f);
         ht.Add("time" , bulletcreatetime);
@@ -41,7 +43,7 @@ public class ShootBullet : MonoBehaviour {
             GameObject mybullet = (GameObject)Instantiate(bullet, gameObject.transform.GetChild(0).transform.position,Quaternion.Euler(90f , 0.0f , 0.0f));
 
             mybullet.GetComponent<Rigidbody>().AddForce(new Vector3(direction1.x , 0.0f , direction1.z)* 30 * bulletspeed, ForceMode.Impulse);
-            
+            tank_smoke.SetActive(true);
             shootray.origin = gameObject.transform.GetChild(0).transform.position;
             shootray.direction = direction;
             Invoke("switchOffLight", 0.2f);
@@ -51,6 +53,7 @@ public class ShootBullet : MonoBehaviour {
 
     public void switchOffLight()
     {
+        tank_smoke.SetActive(false);
         shootlight.GetComponent<Light>().enabled = false;
     }
 

@@ -95,6 +95,7 @@
     <Compile Include="Assets\scripts\CreateChatter.cs" />
     <Compile Include="Assets\scripts\CreateMonsters.cs" />
     <Compile Include="Assets\scripts\CreatePan.cs" />
+    <Compile Include="Assets\scripts\FlyingMonsterPath.cs" />
     <Compile Include="Assets\scripts\FollowMonster.cs" />
     <Compile Include="Assets\scripts\FollowTouch.cs" />
     <Compile Include="Assets\scripts\KillMonster.cs" />

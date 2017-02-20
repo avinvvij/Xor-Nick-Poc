@@ -72,6 +72,7 @@ ModelImporter:
     7400000: Default Take
     7400002: ArmatureAction_001
     7400004: bullethit
+    7400006: attack
     9500000: //RootNode
     13700000: Sphere
   materials:
@@ -99,7 +100,7 @@ ModelImporter:
       name: Default Take
       takeName: Default Take
       firstFrame: 0
-      lastFrame: 19
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -182,6 +183,90 @@ ModelImporter:
     - serializedVersion: 16
       name: ArmatureAction_001
       takeName: ArmatureAction_001
+      firstFrame: -1
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/eye_ik_L
+        weight: 1
+      - path: Armature/eye_ik_R
+        weight: 1
+      - path: Armature/eye_L
+        weight: 1
+      - path: Armature/eye_R
+        weight: 1
+      - path: Armature/pelvis
+        weight: 1
+      - path: Armature/pelvis/head
+        weight: 1
+      - path: Armature/pelvis/head/wing_low_L
+        weight: 1
+      - path: Armature/pelvis/head/wing_low_L/wing_middle_L
+        weight: 1
+      - path: Armature/pelvis/head/wing_low_L/wing_middle_L/wing_up_L
+        weight: 1
+      - path: Armature/pelvis/head/wing_low_R
+        weight: 1
+      - path: Armature/pelvis/head/wing_low_R/wing_middle_R
+        weight: 1
+      - path: Armature/pelvis/head/wing_low_R/wing_middle_R/wing_up_R
+        weight: 1
+      - path: Armature/pelvis/leg_middle_thigh_L
+        weight: 1
+      - path: Armature/pelvis/leg_middle_thigh_L/leg_middle_knee_L
+        weight: 1
+      - path: Armature/pelvis/leg_middle_thigh_L/leg_middle_knee_L/leg_middle_L
+        weight: 1
+      - path: Armature/pelvis/leg_middle_thigh_R
+        weight: 1
+      - path: Armature/pelvis/leg_middle_thigh_R/leg_middle_knee_R
+        weight: 1
+      - path: Armature/pelvis/leg_middle_thigh_R/leg_middle_knee_R/leg_middle_R
+        weight: 1
+      - path: Armature/pelvis/leg_side_thigh_L
+        weight: 1
+      - path: Armature/pelvis/leg_side_thigh_L/leg_side_knee_L
+        weight: 1
+      - path: Armature/pelvis/leg_side_thigh_L/leg_side_knee_L/leg_side_L
+        weight: 1
+      - path: Armature/pelvis/leg_side_thigh_R
+        weight: 1
+      - path: Armature/pelvis/leg_side_thigh_R/leg_side_knee_R
+        weight: 1
+      - path: Armature/pelvis/leg_side_thigh_R/leg_side_knee_R/leg_side_R
+        weight: 1
+      - path: collider
+        weight: 1
+      - path: Sphere
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attack
+      takeName: attack
       firstFrame: -1
       lastFrame: 39
       wrapMode: 0
