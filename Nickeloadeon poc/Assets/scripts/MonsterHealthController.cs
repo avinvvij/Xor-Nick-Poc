@@ -30,7 +30,7 @@ public class MonsterHealthController : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
-            }
+       }
     }
 
     public int getHealth()
@@ -53,7 +53,7 @@ public class MonsterHealthController : MonoBehaviour {
         {
             GetComponent<FlyingMonsterPath>().enabled = false;
         }
-            Invoke("stopBulletAnimation", 0.1f);
+            Invoke("stopBulletAnimation", 0.15f);
     }
 
     public void stopBulletAnimation()
