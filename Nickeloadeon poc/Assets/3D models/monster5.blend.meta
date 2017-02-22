@@ -1,43 +1,64 @@
 fileFormatVersion: 2
 guid: 6351b7ebcd1afa447a675c87b73aeff6
-timeCreated: 1487669822
+timeCreated: 1487743731
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Armature
-    100004: Cylinder
-    100006: eyeup_L
-    100008: eyeup_M
-    100010: eyeup_R
-    100012: eyeupper_L
-    100014: eyeupper_M
-    100016: eyeupper_R
-    100018: head
-    100020: leg_L
-    100022: leg_R
-    100024: pelvis
-    400000: //RootNode
-    400002: Armature
-    400004: Cylinder
-    400006: eyeup_L
-    400008: eyeup_M
-    400010: eyeup_R
-    400012: eyeupper_L
-    400014: eyeupper_M
-    400016: eyeupper_R
-    400018: head
-    400020: leg_L
-    400022: leg_R
-    400024: pelvis
-    2300000: //RootNode
-    2300002: Cylinder
-    3300000: //RootNode
-    3300002: Cylinder
+    100000: Armature
+    100002: Cylinder
+    100004: eye_middle
+    100006: eye_middle_tracker
+    100008: eye_upper_L
+    100010: eye_upper_M
+    100012: eye_upper_R
+    100014: eye_upper_tracker_L
+    100016: eye_upper_tracker_R
+    100018: eyebody
+    100020: eyebody_tracker
+    100022: eyeup_L
+    100024: eyeup_M
+    100026: eyeup_R
+    100028: eyeupper_L
+    100030: eyeupper_R
+    100032: head
+    100034: leg_L
+    100036: leg_R
+    100038: //RootNode
+    100040: pelvis
+    100042: Cylinder_001
+    400000: Armature
+    400002: Cylinder
+    400004: eye_middle
+    400006: eye_middle_tracker
+    400008: eye_upper_L
+    400010: eye_upper_M
+    400012: eye_upper_R
+    400014: eye_upper_tracker_L
+    400016: eye_upper_tracker_R
+    400018: eyebody
+    400020: eyebody_tracker
+    400022: eyeup_L
+    400024: eyeup_M
+    400026: eyeup_R
+    400028: eyeupper_L
+    400030: eyeupper_R
+    400032: head
+    400034: leg_L
+    400036: leg_R
+    400038: //RootNode
+    400040: pelvis
+    400042: Cylinder_001
+    2300000: Cylinder_001
+    3300000: Cylinder_001
     4300000: Cylinder
+    4300002: Cylinder_001
     7400000: Default Take
+    7400002: ArmatureAction
+    7400004: bullethit
+    7400006: attack
     9500000: //RootNode
+    13700000: Cylinder
   materials:
     importMaterials: 1
     materialName: 0
@@ -58,7 +79,295 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/eye_middle_tracker
+        weight: 1
+      - path: Armature/eye_upper_tracker_L
+        weight: 1
+      - path: Armature/eye_upper_tracker_R
+        weight: 1
+      - path: Armature/eyebody_tracker
+        weight: 1
+      - path: Armature/pelvis
+        weight: 1
+      - path: Armature/pelvis/head
+        weight: 1
+      - path: Armature/pelvis/head/eyebody
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L/eyeupper_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L/eyeupper_L/eye_upper_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M/eye_middle
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M/eye_middle/eye_upper_M
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R/eyeupper_R
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R/eyeupper_R/eye_upper_R
+        weight: 1
+      - path: Armature/pelvis/leg_L
+        weight: 1
+      - path: Armature/pelvis/leg_R
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ArmatureAction
+      takeName: ArmatureAction
+      firstFrame: -1
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/eye_middle_tracker
+        weight: 1
+      - path: Armature/eye_upper_tracker_L
+        weight: 1
+      - path: Armature/eye_upper_tracker_R
+        weight: 1
+      - path: Armature/eyebody_tracker
+        weight: 1
+      - path: Armature/pelvis
+        weight: 1
+      - path: Armature/pelvis/head
+        weight: 1
+      - path: Armature/pelvis/head/eyebody
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L/eyeupper_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L/eyeupper_L/eye_upper_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M/eye_middle
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M/eye_middle/eye_upper_M
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R/eyeupper_R
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R/eyeupper_R/eye_upper_R
+        weight: 1
+      - path: Armature/pelvis/leg_L
+        weight: 1
+      - path: Armature/pelvis/leg_R
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attack
+      takeName: attack
+      firstFrame: -1
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/eye_middle_tracker
+        weight: 1
+      - path: Armature/eye_upper_tracker_L
+        weight: 1
+      - path: Armature/eye_upper_tracker_R
+        weight: 1
+      - path: Armature/eyebody_tracker
+        weight: 1
+      - path: Armature/pelvis
+        weight: 1
+      - path: Armature/pelvis/head
+        weight: 1
+      - path: Armature/pelvis/head/eyebody
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L/eyeupper_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L/eyeupper_L/eye_upper_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M/eye_middle
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M/eye_middle/eye_upper_M
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R/eyeupper_R
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R/eyeupper_R/eye_upper_R
+        weight: 1
+      - path: Armature/pelvis/leg_L
+        weight: 1
+      - path: Armature/pelvis/leg_R
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: bullethit
+      takeName: bullethit
+      firstFrame: -1
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/eye_middle_tracker
+        weight: 1
+      - path: Armature/eye_upper_tracker_L
+        weight: 1
+      - path: Armature/eye_upper_tracker_R
+        weight: 1
+      - path: Armature/eyebody_tracker
+        weight: 1
+      - path: Armature/pelvis
+        weight: 1
+      - path: Armature/pelvis/head
+        weight: 1
+      - path: Armature/pelvis/head/eyebody
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L/eyeupper_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_L/eyeupper_L/eye_upper_L
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M/eye_middle
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_M/eye_middle/eye_upper_M
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R/eyeupper_R
+        weight: 1
+      - path: Armature/pelvis/head/eyeup_R/eyeupper_R/eye_upper_R
+        weight: 1
+      - path: Armature/pelvis/leg_L
+        weight: 1
+      - path: Armature/pelvis/leg_R
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

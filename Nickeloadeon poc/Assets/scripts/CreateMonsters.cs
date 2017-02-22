@@ -34,6 +34,9 @@ public class CreateMonsters : MonoBehaviour {
                 case 3:
                     monster = (GameObject)Instantiate(monsters[3], new Vector3(randomx, 2.21f, 15.6f), monsters[3].transform.rotation);
                     break;
+                case 4:
+                    monster = (GameObject)Instantiate(monsters[4], new Vector3(randomx, 2.21f, 15.6f), monsters[4].transform.rotation);
+                    break;
 
             }
             createtime = Time.time + timeinterval;

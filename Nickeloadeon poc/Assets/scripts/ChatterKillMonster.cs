@@ -10,7 +10,7 @@ public class ChatterKillMonster : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "monster" )
+        if (other.gameObject.tag == "monster" || other.gameObject.tag == "shootingmonster")
         {
             //Destroy(other.gameObject);
             Instantiate(monsterhit_particle, new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y, other.gameObject.transform.position.z + 1f), other.transform.rotation);
