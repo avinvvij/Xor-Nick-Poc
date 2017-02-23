@@ -51,6 +51,8 @@ ModelImporter:
     4300002: Cylinder
     7400000: Default Take
     7400002: ArmatureAction
+    7400004: ArmatureAction_002
+    7400006: attackaction
     9500000: //RootNode
     13700000: Cylinder
   materials:
@@ -78,14 +80,14 @@ ModelImporter:
       name: Default Take
       takeName: Default Take
       firstFrame: 0
-      lastFrame: 39
+      lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -132,6 +134,8 @@ ModelImporter:
       - path: Armature/lowerbody/leg_upper_R/knee_R/foot_R
         weight: 1
       - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -139,7 +143,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ArmatureAction
       takeName: ArmatureAction
-      firstFrame: 0
+      firstFrame: -1
       lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
@@ -194,6 +198,136 @@ ModelImporter:
       - path: Armature/lowerbody/leg_upper_R/knee_R/foot_R
         weight: 1
       - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ArmatureAction_002
+      takeName: ArmatureAction_002
+      firstFrame: -1
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/lowerbody
+        weight: 1
+      - path: Armature/lowerbody/head
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_L
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_L/hand_m_L
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_L/hand_m_L/hand_lower_L
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_R
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_R/hand_m_R
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_R/hand_m_R/hand_lower_R
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_L
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_L/knee_L
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_L/knee_L/foot_L
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_R
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_R/knee_R
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_R/knee_R/foot_R
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attackaction
+      takeName: attackaction
+      firstFrame: -1
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/lowerbody
+        weight: 1
+      - path: Armature/lowerbody/head
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_L
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_L/hand_m_L
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_L/hand_m_L/hand_lower_L
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_R
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_R/hand_m_R
+        weight: 1
+      - path: Armature/lowerbody/head/shoulder_R/hand_m_R/hand_lower_R
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_L
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_L/knee_L
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_L/knee_L/foot_L
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_R
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_R/knee_R
+        weight: 1
+      - path: Armature/lowerbody/leg_upper_R/knee_R/foot_R
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder_001
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour {
 
+    public float destroy_time = 3f;
+
 	// Use this for initialization
 	void Start () {
 
-        Invoke("destroySelf", 3f);
+        Invoke("destroySelf", destroy_time);
     }
 
     public void destroySelf()
