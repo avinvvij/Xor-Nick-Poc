@@ -10,10 +10,12 @@ public class ShootBullet : MonoBehaviour {
     public float bulletspeed = -10f , bulletcreatetime = 0.55f;
     Ray shootray;
     GameObject tank_smoke;
-
-
+    GameObject level_controller;
+    LevelController level_controller_script;
     // Use this for initialization
     void Start () {
+        level_controller = GameObject.FindGameObjectWithTag("LevelController");
+        level_controller_script = level_controller.GetComponent<LevelController>();
         tank_smoke = transform.GetChild(0).transform.GetChild(0).gameObject;
         ht = new Hashtable();
         ht.Add("z", gameObject.transform.position.z + 0.3f);
@@ -31,7 +33,7 @@ public class ShootBullet : MonoBehaviour {
 
     public void makeashoot()
     {
-        if (canshoot)
+        if (canshoot && level_controller_script.tank_canshoot == true)
         {
             //print("ill shoot here");
             //print("" + transform.TransformDirection(gameObject.transform.position));

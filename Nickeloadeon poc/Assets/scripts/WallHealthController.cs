@@ -8,6 +8,7 @@ public class WallHealthController : MonoBehaviour {
     GameObject[] crate_children;
     bool color_changed = false;
     bool game_over = false;
+    public GameObject gameover_particle;
 
 	// Use this for initialization
 	void Start () {
@@ -38,8 +39,11 @@ public class WallHealthController : MonoBehaviour {
             game_over = true;
             for (int i = 0; i < crate_children.Length; i++)
             {
-                crate_children[i].GetComponent<Renderer>().material.color = Color.Lerp(crate_children[i].GetComponent<Renderer>().material.color, Color.black, 45f * Time.deltaTime);
+                Instantiate(gameover_particle, crate_children[i].transform.position+ new Vector3(0.0f , 2.0f ,0.0f), crate_children[i].transform.rotation);
+                Destroy(crate_children[i]);
+                //crate_children[i].GetComponent<Renderer>().material.color = Color.Lerp(crate_children[i].GetComponent<Renderer>().material.color, Color.black, 45f * Time.deltaTime);
             }
+
         }
 	}
 
