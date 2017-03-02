@@ -9,6 +9,8 @@ public class MonsterHealthController : MonoBehaviour {
     Animator animation_handler;
     public GameObject blood_puddle , blood_mash;
     Image blood_pd_img;
+    public GameObject blue_marble,green_marble;
+    public int marbles_generated;
 	
 	void Start () {
         animation_handler = this.transform.GetChild(0).GetComponent<Animator>();
@@ -18,7 +20,22 @@ public class MonsterHealthController : MonoBehaviour {
 	void Update () {
         if (this.health <= 0)
         {
-            //Instantiate(blood_mash, gameObject.transform.position - new Vector3(0f, 2f, 0f), Quaternion.Euler(90f, 0f, 0f));
+            for(int i = 0; i < marbles_generated; i++)
+            {
+                int marble_icon = Random.Range(0,2);
+                switch (marble_icon)
+                {
+                    case 0:
+                        Instantiate(blue_marble, gameObject.transform.position, blue_marble.transform.rotation);
+                        break;
+                    case 1:
+                        Instantiate(green_marble, gameObject.transform.position, green_marble.transform.rotation);
+                        break;
+                }
+                
+                
+            }
+
             GameObject bp = (GameObject) Instantiate(blood_puddle, gameObject.transform.position - new Vector3(0f,2f,0f) , Quaternion.Euler(90f , 0f, 0f));
             blood_pd_img = bp.GetComponentInChildren<Image>();
             blood_pd_img.color = gameObject.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.GetColor("_Color");
@@ -68,5 +85,8 @@ public class MonsterHealthController : MonoBehaviour {
             GetComponent<FlyingMonsterPath>().enabled = true;
         }
     }
+
+
+    
 
 }

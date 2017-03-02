@@ -18,7 +18,6 @@ public class FollowTouch : MonoBehaviour {
         {
 
             Vector3 targetpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            
             if(targetpos.z > -8.8f)
             {
                 gameObject.transform.position = new Vector3(targetpos.x, gameObject.transform.position.y, targetpos.z);
@@ -29,7 +28,6 @@ public class FollowTouch : MonoBehaviour {
             if(Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
-                EventSystem.current.IsPointerOverGameObject(touch.fingerId);
                 if ((touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved))
                 {
                     Plane plane = new Plane(Vector3.up, transform.position);

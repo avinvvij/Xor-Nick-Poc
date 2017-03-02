@@ -9,9 +9,13 @@ public class CreateChatter : MonoBehaviour {
     public Image loading_image;
     float start_time;
     public float time_interval = 1f;
+    GameObject marble_controller;
+    MarbleScoreController marble_score;
 
     private void Start()
     {
+        marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
+        marble_score = marble_controller.GetComponent<MarbleScoreController>();
         start_time = Time.time;
         loading_image.fillAmount = 1f;
     }
@@ -26,11 +30,12 @@ public class CreateChatter : MonoBehaviour {
 
     public void createChatter()
     {
-        if (start_time < Time.time)
+        if (start_time < Time.time && marble_score.getMarbleCount() >= 5)
         {
             Instantiate(chatter, instantiateposition.transform.position, chatter.transform.rotation);
             start_time = Time.time + time_interval;
             loading_image.fillAmount = 0f;
+            marble_score.add_to_marble_count(-5);
         }
     }
 }

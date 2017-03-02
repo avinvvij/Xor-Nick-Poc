@@ -10,11 +10,15 @@ public class CreatePan : MonoBehaviour {
     public Image loading_image;
     float start_time;
     public float time_interval = 1f;
+    GameObject marble_controller;
+    MarbleScoreController marble_score;
 
     // Use this for initialization
     void Start () {
         start_time = Time.time;
         loading_image.fillAmount = 1f;
+        marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
+        marble_score = marble_controller.GetComponent<MarbleScoreController>();
     }
 	
 	// Update is called once per frame
@@ -55,11 +59,12 @@ public class CreatePan : MonoBehaviour {
 
     public void createPan()
     {
-        if (start_time < Time.time)
+        if (start_time < Time.time && marble_score.getMarbleCount() >= 5)
         {
             generatepan = true;
             start_time = Time.time + time_interval;
             loading_image.fillAmount = 0f;
+            marble_score.add_to_marble_count(-5);
         }
      }
 }

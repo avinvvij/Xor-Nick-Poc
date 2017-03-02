@@ -102,6 +102,9 @@
     <Compile Include="Assets\scripts\KillMonster.cs" />
     <Compile Include="Assets\scripts\LevelController.cs" />
     <Compile Include="Assets\scripts\ManageAnimationSpeed.cs" />
+    <Compile Include="Assets\scripts\ManageMarbleAnimation.cs" />
+    <Compile Include="Assets\scripts\MarbleAnimation.cs" />
+    <Compile Include="Assets\scripts\MarbleScoreController.cs" />
     <Compile Include="Assets\scripts\MonsterBulletController.cs" />
     <Compile Include="Assets\scripts\MonsterHealthController.cs" />
     <Compile Include="Assets\scripts\MonsterMove.cs" />
