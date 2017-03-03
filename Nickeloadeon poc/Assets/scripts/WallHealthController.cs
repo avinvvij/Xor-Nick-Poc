@@ -9,9 +9,13 @@ public class WallHealthController : MonoBehaviour {
     bool color_changed = false;
     bool game_over = false;
     public GameObject gameover_particle;
+    GameObject level_controller;
 
 	// Use this for initialization
 	void Start () {
+
+        level_controller = GameObject.FindGameObjectWithTag("LevelController");
+
         crate_children = new GameObject[transform.childCount - 1];
         for(int i = 0; i < transform.childCount; i++)
         {
@@ -35,7 +39,7 @@ public class WallHealthController : MonoBehaviour {
         }
 		if(wallhealth <= 0 && game_over == false)
         {
-            print("game over");
+            level_controller.GetComponent<LevelController>().display_GameoverPanel();
             game_over = true;
             for (int i = 0; i < crate_children.Length; i++)
             {

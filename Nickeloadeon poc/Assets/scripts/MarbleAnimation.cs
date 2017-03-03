@@ -8,24 +8,28 @@ public class MarbleAnimation : MonoBehaviour {
 
     Hashtable anim_up , anim_down , anim_to_marbles;
     public float animation_factor;
+    public float min_move_factor = 1f, max_move_factor = 2f;
+    GameObject marble_controller;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
+
         //animation to move the marble up
         anim_up = new Hashtable();
-        anim_up.Add("z" , gameObject.transform.position.z + 2f);
+        anim_up.Add("z" , gameObject.transform.position.z + Random.Range(min_move_factor , max_move_factor));
         anim_up.Add("time",animation_factor);
         anim_up.Add("oncomplete", "onUpAnimationComplete");
-        anim_up.Add("easetype", iTween.EaseType.linear);
+        //anim_up.Add("easetype", iTween.EaseType.linear);
         iTween.MoveTo(gameObject , anim_up);
 
         //animation initializatiion of moving marble down
         anim_down = new Hashtable();
-        anim_down.Add("z", gameObject.transform.position.z - 2f);
+        anim_down.Add("z", gameObject.transform.position.z - Random.Range(min_move_factor, max_move_factor));
         anim_down.Add("time", animation_factor);
         anim_down.Add("oncomplete", "onAnimationDownComplete");
-        anim_down.Add("easetype", iTween.EaseType.linear);
+        //anim_down.Add("easetype", iTween.EaseType.linear);
 
         //animation initialization of moving the marble towards marbles
         anim_to_marbles = new Hashtable();
@@ -57,6 +61,7 @@ public class MarbleAnimation : MonoBehaviour {
     public void onAnimToMarbleComplete()
     {
         GameObject.FindGameObjectWithTag("marbles").GetComponent<ManageMarbleAnimation>().playAnimation();
+        marble_controller.GetComponent<MarbleScoreController>().add_to_marble_count(1);
         Destroy(gameObject);
     }
 

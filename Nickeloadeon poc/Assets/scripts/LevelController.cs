@@ -17,9 +17,19 @@ public class LevelController : MonoBehaviour {
     bool can_render_next = false;
     public GameObject[] monster_gameobjects;
     public GameObject[] wave_parents;
+    public GameObject after_game_panel;
+    public Text after_game_text;
+    public Text after_game_marble_count , after_game_wall_health , after_game_coins;
+    GameObject marble_controller, wall_health_controller;
+    bool game_over = false;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
+
+        marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
+        wall_health_controller = GameObject.FindGameObjectWithTag("wallhealthcontroller");
+
         level_text.text = "LEVEL " + level_no;
         level_ht = new Hashtable();
         level_ht.Add("x", 50f);
@@ -110,6 +120,12 @@ public class LevelController : MonoBehaviour {
             wave_rend[wave_no].SetActive(false);
             wave_no++;
             can_render_next = true;
+        }else
+        {
+            display_GameoverPanel();
+            after_game_text.text = "Victory";
+            wave_rend[wave_no].SetActive(false);
+            tank_canshoot = false;
         }
     }
 
@@ -122,6 +138,21 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    public void display_GameoverPanel()
+    {
+
+        after_game_marble_count.text = marble_controller.GetComponent<MarbleScoreController>().getMarbleCount() + "";
+        after_game_wall_health.text = wall_health_controller.GetComponent<WallHealthController>().getWallHealth() + "%";
+        int coins = marble_controller.GetComponent<MarbleScoreController>().getMarbleCount() + wall_health_controller.GetComponent<WallHealthController>().getWallHealth();
+        after_game_coins.text = coins + "";
+
+        for (int i=0;i<wave_parents.Length; i++)
+        {
+            wave_parents[i].SetActive(false);
+        }
+        after_game_panel.SetActive(true);
+        tank_canshoot = false;
+    }
 
 
     public static class JsonHelper

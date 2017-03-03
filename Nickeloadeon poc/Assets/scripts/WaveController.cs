@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveController : MonoBehaviour {
 
@@ -20,5 +21,9 @@ public class WaveController : MonoBehaviour {
         ht.Add("oncompletetarget", level_controller);
         iTween.ShakePosition(Camera.main.gameObject , ht);
     }
+
+
+    
+
 	
 }

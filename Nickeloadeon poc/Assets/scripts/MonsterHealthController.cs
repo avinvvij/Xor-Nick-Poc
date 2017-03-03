@@ -9,7 +9,7 @@ public class MonsterHealthController : MonoBehaviour {
     Animator animation_handler;
     public GameObject blood_puddle , blood_mash;
     Image blood_pd_img;
-    public GameObject blue_marble,green_marble;
+    public GameObject blue_marble,green_marble,red_marble;
     public int marbles_generated;
 	
 	void Start () {
@@ -20,19 +20,23 @@ public class MonsterHealthController : MonoBehaviour {
 	void Update () {
         if (this.health <= 0)
         {
+            float x_factor = 0.0f;
             for(int i = 0; i < marbles_generated; i++)
             {
-                int marble_icon = Random.Range(0,2);
+                int marble_icon = Random.Range(0,3);
                 switch (marble_icon)
                 {
                     case 0:
-                        Instantiate(blue_marble, gameObject.transform.position, blue_marble.transform.rotation);
+                        Instantiate(blue_marble, gameObject.transform.position + new Vector3(x_factor, 0f , 0f), blue_marble.transform.rotation);
                         break;
                     case 1:
-                        Instantiate(green_marble, gameObject.transform.position, green_marble.transform.rotation);
+                        Instantiate(green_marble, gameObject.transform.position + new Vector3(x_factor, 0f, 0f), green_marble.transform.rotation);
+                        break;
+                    case 2:
+                        Instantiate(red_marble, gameObject.transform.position + new Vector3(x_factor, 0f, 0f), red_marble.transform.rotation);
                         break;
                 }
-                
+                x_factor = x_factor + 0.5f;
                 
             }
 

@@ -10,12 +10,11 @@ public class ManageMarbleAnimation : MonoBehaviour {
     public Vector3 initial_scale;
     public float animation_time = 0.1f;
     public float scale_factor = 0.5f;
-    GameObject marble_controller;
+    
 
 	// Use this for initialization
 	void Start () {
-        marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
-
+        
 
         //initializing scale up animation
         ht_scale_up = new Hashtable();
@@ -43,7 +42,7 @@ public class ManageMarbleAnimation : MonoBehaviour {
     public void onScaleUpComplete()
     {
         iTween.ScaleTo(gameObject, ht_scale_down);
-        marble_controller.GetComponent<MarbleScoreController>().add_to_marble_count(1);
+       
     }
 
 }
