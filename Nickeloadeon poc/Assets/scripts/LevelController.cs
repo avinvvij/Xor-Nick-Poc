@@ -27,6 +27,7 @@ public class LevelController : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        level_no = PlayerPrefs.GetInt("level_no",1);
         marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
         wall_health_controller = GameObject.FindGameObjectWithTag("wallhealthcontroller");
 
@@ -152,6 +153,11 @@ public class LevelController : MonoBehaviour {
         }
         after_game_panel.SetActive(true);
         tank_canshoot = false;
+    }
+
+    public bool getTankShootStatus()
+    {
+        return this.tank_canshoot;
     }
 
 

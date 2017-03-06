@@ -6,7 +6,7 @@ public class MarbleAnimation : MonoBehaviour {
 
     RectTransform rect_transform;
 
-    Hashtable anim_up , anim_down , anim_to_marbles;
+    Hashtable anim_up , anim_down , anim_half_up , anim_half_down, anim_to_marbles;
     public float animation_factor;
     public float min_move_factor = 1f, max_move_factor = 2f;
     GameObject marble_controller;
@@ -21,7 +21,6 @@ public class MarbleAnimation : MonoBehaviour {
         anim_up.Add("z" , gameObject.transform.position.z + Random.Range(min_move_factor , max_move_factor));
         anim_up.Add("time",animation_factor);
         anim_up.Add("oncomplete", "onUpAnimationComplete");
-        //anim_up.Add("easetype", iTween.EaseType.linear);
         iTween.MoveTo(gameObject , anim_up);
 
         //animation initializatiion of moving marble down
@@ -29,7 +28,20 @@ public class MarbleAnimation : MonoBehaviour {
         anim_down.Add("z", gameObject.transform.position.z - Random.Range(min_move_factor, max_move_factor));
         anim_down.Add("time", animation_factor);
         anim_down.Add("oncomplete", "onAnimationDownComplete");
-        //anim_down.Add("easetype", iTween.EaseType.linear);
+
+
+        //animation initialization of moving marble half up
+        anim_half_up = new Hashtable();
+        anim_half_up.Add("z", gameObject.transform.position.z + Random.Range(min_move_factor/2, max_move_factor/2));
+        anim_half_up.Add("time", animation_factor/2);
+        anim_half_up.Add("oncomplete", "onAnimationHalfUpComplete");
+
+
+        //animation initialization of moving marble half down
+        anim_half_down = new Hashtable();
+        anim_half_down.Add("z", gameObject.transform.position.z - Random.Range(min_move_factor / 2, max_move_factor / 2));
+        anim_half_down.Add("time", animation_factor/2);
+        anim_half_down.Add("oncomplete", "onAnimationHalfDownComplete");
 
         //animation initialization of moving the marble towards marbles
         anim_to_marbles = new Hashtable();
@@ -55,7 +67,7 @@ public class MarbleAnimation : MonoBehaviour {
 
     public void onAnimationDownComplete()
     {
-        iTween.MoveTo(gameObject, anim_to_marbles);
+        iTween.MoveTo(gameObject,  anim_half_up);
     }
 
     public void onAnimToMarbleComplete()
@@ -63,6 +75,17 @@ public class MarbleAnimation : MonoBehaviour {
         GameObject.FindGameObjectWithTag("marbles").GetComponent<ManageMarbleAnimation>().playAnimation();
         marble_controller.GetComponent<MarbleScoreController>().add_to_marble_count(1);
         Destroy(gameObject);
+
+    }
+
+    public void onAnimationHalfUpComplete()
+    {
+        iTween.MoveTo(gameObject, anim_half_down);
+    }
+
+    public void onAnimationHalfDownComplete()
+    {
+        iTween.MoveTo(gameObject, anim_to_marbles);
     }
 
 }

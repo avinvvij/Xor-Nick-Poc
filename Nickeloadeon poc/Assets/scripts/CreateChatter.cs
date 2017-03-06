@@ -11,9 +11,11 @@ public class CreateChatter : MonoBehaviour {
     public float time_interval = 1f;
     GameObject marble_controller;
     MarbleScoreController marble_score;
+    GameObject level_controller;
 
     private void Start()
     {
+        level_controller = GameObject.FindGameObjectWithTag("LevelController");
         marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
         marble_score = marble_controller.GetComponent<MarbleScoreController>();
         start_time = Time.time;
@@ -30,7 +32,7 @@ public class CreateChatter : MonoBehaviour {
 
     public void createChatter()
     {
-        if (start_time < Time.time && marble_score.getMarbleCount() >= 5)
+        if (start_time < Time.time && marble_score.getMarbleCount() >= 5 && level_controller.GetComponent<LevelController>().getTankShootStatus()==true)
         {
             Instantiate(chatter, instantiateposition.transform.position, chatter.transform.rotation);
             start_time = Time.time + time_interval;

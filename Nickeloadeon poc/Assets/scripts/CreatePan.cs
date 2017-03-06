@@ -12,9 +12,11 @@ public class CreatePan : MonoBehaviour {
     public float time_interval = 1f;
     GameObject marble_controller;
     MarbleScoreController marble_score;
+    GameObject level_controller;
 
     // Use this for initialization
     void Start () {
+        level_controller = GameObject.FindGameObjectWithTag("LevelController");
         start_time = Time.time;
         loading_image.fillAmount = 1f;
         marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
@@ -59,7 +61,7 @@ public class CreatePan : MonoBehaviour {
 
     public void createPan()
     {
-        if (start_time < Time.time && marble_score.getMarbleCount() >= 5)
+        if (start_time < Time.time && marble_score.getMarbleCount() >= 5 && level_controller.GetComponent<LevelController>().getTankShootStatus() == true)
         {
             generatepan = true;
             start_time = Time.time + time_interval;
