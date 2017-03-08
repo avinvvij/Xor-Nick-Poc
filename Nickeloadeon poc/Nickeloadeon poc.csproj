@@ -79,6 +79,9 @@
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>Assets\LitJson.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Nickeloadeon poc.Plugins.csproj">
@@ -88,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugin\HockeyAppUnityAndroid\HockeyAppUnity-Scripts\HockeyAppAndroid.cs" />
-    <Compile Include="Assets\ReloadLevelScript.cs" />
+    <Compile Include="Assets\scripts\AnimateWater.cs" />
     <Compile Include="Assets\scripts\ChatterKillMonster.cs" />
     <Compile Include="Assets\scripts\CollisionBullet.cs" />
     <Compile Include="Assets\scripts\CollisionCrate.cs" />
@@ -101,7 +104,9 @@
     <Compile Include="Assets\scripts\FollowMonster.cs" />
     <Compile Include="Assets\scripts\FollowTouch.cs" />
     <Compile Include="Assets\scripts\KillMonster.cs" />
+    <Compile Include="Assets\scripts\LevelConfiguration.cs" />
     <Compile Include="Assets\scripts\LevelController.cs" />
+    <Compile Include="Assets\scripts\LoadTheLevel.cs" />
     <Compile Include="Assets\scripts\ManageAnimationSpeed.cs" />
     <Compile Include="Assets\scripts\ManageMarbleAnimation.cs" />
     <Compile Include="Assets\scripts\MarbleAnimation.cs" />
@@ -115,6 +120,7 @@
     <Compile Include="Assets\scripts\ParticleController.cs" />
     <Compile Include="Assets\scripts\PathEditor.cs" />
     <Compile Include="Assets\scripts\PuddleController.cs" />
+    <Compile Include="Assets\scripts\ReloadLevelScript.cs" />
     <Compile Include="Assets\scripts\RotateBulet.cs" />
     <Compile Include="Assets\scripts\RotateGun.cs" />
     <Compile Include="Assets\scripts\RotateToPoint.cs" />

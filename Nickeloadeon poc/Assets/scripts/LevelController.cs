@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using LitJson;
 
 public class LevelController : MonoBehaviour {
 
@@ -22,11 +24,14 @@ public class LevelController : MonoBehaviour {
     public Text after_game_marble_count , after_game_wall_health , after_game_coins;
     GameObject marble_controller, wall_health_controller;
     bool game_over = false;
+    JsonData config_data;
 
 
     // Use this for initialization
     void Start () {
 
+        string json_text = File.ReadAllText(Application.persistentDataPath + "\\configuration.json");
+        config_data = JsonMapper.ToObject(json_text);
         level_no = PlayerPrefs.GetInt("level_no",1);
         marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
         wall_health_controller = GameObject.FindGameObjectWithTag("wallhealthcontroller");
@@ -136,6 +141,12 @@ public class LevelController : MonoBehaviour {
         if(wave_no == 3)
         {
             Instantiate(victory_particle, victory_particle.transform.position, victory_particle.transform.rotation);
+            //unlock the next level
+            int temp_level_no = level_no + 1;
+            config_data["level_reached"] = ""+temp_level_no+"";
+            config_data = JsonMapper.ToJson(config_data);
+            File.WriteAllText(Application.persistentDataPath + "\\configuration.json" , config_data.ToString());
+            
         }
     }
 

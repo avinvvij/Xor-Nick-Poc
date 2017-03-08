@@ -17,7 +17,11 @@ public class ReloadLevelScript : MonoBehaviour {
     public void ReloadLevel()
     {
         PlayerPrefs.SetInt("level_no", GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>().getLevel_No());
-        Application.LoadLevel(0);
+        Application.LoadLevel(1);
     }
 
+    public void TakeToPreviousMenu()
+    {
+        Application.LoadLevel(0);
+    }
 }
