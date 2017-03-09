@@ -5,6 +5,7 @@ using LitJson;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
+using System;
 
 public class LevelConfiguration : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class LevelConfiguration : MonoBehaviour {
     List<GameObject> button_names;
     public GameObject tank;
     public float move_factor = 1.2f;
+    public Text coin_count;
 
 	// Use this for initialization
 	void Start () {
@@ -29,10 +31,20 @@ public class LevelConfiguration : MonoBehaviour {
         
         if(!File.Exists(Application.persistentDataPath + "\\configuration.json"))
         {
-            File.WriteAllText(Application.persistentDataPath + "\\configuration.json", "{\"level_reached\":\"1\"}");
+            string json_text_string = "{\"version\":\"1\" , \"level_reached\":\"1\" , \"coins_collected\":\"0\"}";
+            File.WriteAllText(Application.persistentDataPath + "\\configuration.json", json_text_string);
         }
         string jsonString = File.ReadAllText(Application.persistentDataPath + "\\configuration.json");
         configdata = JsonMapper.ToObject(jsonString);
+        int level_reached = int.Parse(configdata["level_reached"].ToString());
+        try
+        {
+            int version = int.Parse(configdata["version"].ToString());
+        }catch(Exception e)
+        {
+            string json_text_string = "{\"version\":\"1\" , \"level_reached\":\""+level_reached+"\" , \"coins_collected\":\"0\"}";
+            File.WriteAllText(Application.persistentDataPath + "\\configuration.json", json_text_string);
+        }
         for (int i = 0;i < int.Parse(configdata["level_reached"].ToString()) ; i++)
         {
             button_names[i].transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
@@ -40,9 +52,7 @@ public class LevelConfiguration : MonoBehaviour {
             button_names[i].transform.GetChild(0).GetComponent<Button>().enabled = true;
             tank.transform.position = button_names[i].GetComponent<RectTransform>().position - new Vector3(move_factor , 0.0f , 0.0f);
         }
-        
-        
-
+        coin_count.text = configdata["coins_collected"].ToString();
     }
 	
 	

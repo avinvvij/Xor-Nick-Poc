@@ -142,11 +142,18 @@ public class LevelController : MonoBehaviour {
         {
             Instantiate(victory_particle, victory_particle.transform.position, victory_particle.transform.rotation);
             //unlock the next level
-            int temp_level_no = level_no + 1;
-            config_data["level_reached"] = ""+temp_level_no+"";
+            int temp_level_no = level_no;
+            if (int.Parse(config_data["level_reached"].ToString()) <= level_no)
+            {
+                temp_level_no = level_no + 1;
+            }
+            int coins_collected_previously = int.Parse(config_data["coins_collected"].ToString());
+            int new_amount_coins = coins_collected_previously + marble_controller.GetComponent<MarbleScoreController>().getMarbleCount() + wall_health_controller.GetComponent<WallHealthController>().getWallHealth();
+            config_data["level_reached"] = "" + temp_level_no + "";
+            config_data["coins_collected"] = "" + new_amount_coins + "";
             config_data = JsonMapper.ToJson(config_data);
-            File.WriteAllText(Application.persistentDataPath + "\\configuration.json" , config_data.ToString());
-            
+            File.WriteAllText(Application.persistentDataPath + "\\configuration.json", config_data.ToString());
+
         }
     }
 
