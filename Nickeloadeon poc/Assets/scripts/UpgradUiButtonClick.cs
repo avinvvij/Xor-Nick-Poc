@@ -9,10 +9,12 @@ public class UpgradUiButtonClick : MonoBehaviour {
     int visiblecount = 0;
     public GameObject back_panel;
 
+
     public void onUpgradeUiClicked()
     {
         if (child_visible == false)
         {
+            Camera.main.gameObject.GetComponent<TouchCameraMover>().setCanScroll(false);
             back_panel.SetActive(true);
             for (int i = 0; i < gameObject.transform.childCount; i++)
             {
@@ -23,6 +25,7 @@ public class UpgradUiButtonClick : MonoBehaviour {
             child_visible = true;
         }else if(child_visible == true)
         {
+            Camera.main.gameObject.GetComponent<TouchCameraMover>().setCanScroll(true);
             back_panel.SetActive(false);
             for (int i = 0; i < gameObject.transform.childCount; i++)
             {

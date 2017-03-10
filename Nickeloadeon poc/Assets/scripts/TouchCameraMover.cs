@@ -7,11 +7,22 @@ public class TouchCameraMover : MonoBehaviour {
     int scrolltouchId = -1;
     Vector3 scrolltouchorigin;
     Vector3 camerainitialpos , finalpos;
+    bool canscroll = true;
 
     private void Start()
     {
         camerainitialpos = Camera.main.transform.position;
         finalpos = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -7f); 
+    }
+
+    public bool getCanScroll()
+    {
+        return this.canscroll;
+    }
+
+    public void setCanScroll(bool new_canscroll)
+    {
+        this.canscroll = new_canscroll;
     }
 
     private void Update()
@@ -36,8 +47,8 @@ public class TouchCameraMover : MonoBehaviour {
                 // Do Stuff here
 
                 Vector3 CameraPos = Camera.main.transform.position;
-                if(CameraPos.z >= -13.5f && CameraPos.z <= -4.5f)
-                    //Camera.main.transform.position = new Vector3(CameraPos.x, CameraPos.y, CameraPos.z + (delta.y * 0.05f));
+                if(CameraPos.z >= -13.5f && CameraPos.z <= -4.5f && canscroll == true)
+                    Camera.main.transform.position = new Vector3(CameraPos.x, CameraPos.y, CameraPos.z + (delta.y * 0.05f));
                 
                 // End do stuff
 
@@ -57,36 +68,39 @@ public class TouchCameraMover : MonoBehaviour {
         }else {
             foreach (Touch t in Input.touches)
             {
-                if (t.phase == TouchPhase.Began)
+                if (canscroll == true)
                 {
-                    if (scrolltouchId == -1)
+                    if (t.phase == TouchPhase.Began)
                     {
-                        scrolltouchId = t.fingerId;
-                        scrolltouchorigin = t.position;
-                    }
-                }
-                //Forget it when the touch ends
-                if ((t.phase == TouchPhase.Ended) || (t.phase == TouchPhase.Canceled))
-                {
-                    scrolltouchId = -1;
-                    if(Camera.main.transform.position.z < -10f)
-                    {
-                        iTween.MoveTo(Camera.main.gameObject, camerainitialpos, 0.5f);
-                    }
-                    if(Camera.main.transform.position.z > -7f)
-                    {
-                        iTween.MoveTo(Camera.main.gameObject, finalpos, 0.5f);
-                    }
-                }
-                if (t.phase == TouchPhase.Moved)
-                {
-                    //If the finger has moved and it's the finger that started the touch, move the camera along the Y axis.
-                    if (t.fingerId == scrolltouchId)
-                    {
-                        Vector3 CameraPos = Camera.main.transform.position;
-                        if (CameraPos.z >= -13.5f && CameraPos.z <= -4.5f)
+                        if (scrolltouchId == -1)
                         {
-                            Camera.main.transform.position = new Vector3(CameraPos.x, CameraPos.y, CameraPos.z - (t.deltaPosition.y * 0.05f));
+                            scrolltouchId = t.fingerId;
+                            scrolltouchorigin = t.position;
+                        }
+                    }
+                    //Forget it when the touch ends
+                    if ((t.phase == TouchPhase.Ended) || (t.phase == TouchPhase.Canceled))
+                    {
+                        scrolltouchId = -1;
+                        if (Camera.main.transform.position.z < -10f)
+                        {
+                            iTween.MoveTo(Camera.main.gameObject, camerainitialpos, 0.5f);
+                        }
+                        if (Camera.main.transform.position.z > -7f)
+                        {
+                            iTween.MoveTo(Camera.main.gameObject, finalpos, 0.5f);
+                        }
+                    }
+                    if (t.phase == TouchPhase.Moved)
+                    {
+                        //If the finger has moved and it's the finger that started the touch, move the camera along the Y axis.
+                        if (t.fingerId == scrolltouchId)
+                        {
+                            Vector3 CameraPos = Camera.main.transform.position;
+                            if (CameraPos.z >= -13.5f && CameraPos.z <= -4.5f)
+                            {
+                                Camera.main.transform.position = new Vector3(CameraPos.x, CameraPos.y, CameraPos.z - (t.deltaPosition.y * 0.05f));
+                            }
                         }
                     }
                 }
