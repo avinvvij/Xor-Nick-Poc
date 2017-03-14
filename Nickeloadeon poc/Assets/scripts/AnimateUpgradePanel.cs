@@ -19,6 +19,7 @@ public class AnimateUpgradePanel : MonoBehaviour {
         anim_ht.Add("y", move_factor);
         anim_ht.Add("time", time_factor);
 
+        iTween.MoveTo(gameObject, anim_ht);
         anim_down_ht = new Hashtable();
         anim_down_ht.Add("y", initpos.y);
         anim_down_ht.Add("time", time_factor);

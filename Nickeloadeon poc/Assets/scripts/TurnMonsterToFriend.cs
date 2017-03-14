@@ -14,8 +14,10 @@ public class TurnMonsterToFriend : MonoBehaviour {
     public Image loading_image;
     float start_time;
     public float time_interval = 1f;
+    GameObject marble_controller;
     // Use this for initialization
     void Start () {
+        marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
         start_time = Time.time;
         loading_image.fillAmount = 1f;
     }
@@ -30,7 +32,7 @@ public class TurnMonsterToFriend : MonoBehaviour {
 
     public void TurnMonsterIntoFriend()
     {
-        if (start_time < Time.time)
+        if (start_time < Time.time && marble_controller.GetComponent<MarbleScoreController>().getMarbleCount() >= 5)
         {
             monsters = GameObject.FindGameObjectsWithTag("monster");
             if (monsters.Length != 0 && monsters != null)
@@ -48,7 +50,9 @@ public class TurnMonsterToFriend : MonoBehaviour {
                 selected_monster.GetComponent<MeshCollider>().enabled = false;
                 selected_monster.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 selected_monster.GetComponent<CollisionMonster>().enabled = false;
+                marble_controller.GetComponent<MarbleScoreController>().add_to_marble_count(-5);
                 Invoke("shootspecialbullet", shootafter);
+
             }
             start_time = Time.time + time_interval;
             loading_image.fillAmount = 0f;

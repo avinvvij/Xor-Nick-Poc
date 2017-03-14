@@ -11,10 +11,7 @@ public class AnimateHorizontalUi : MonoBehaviour {
     private void Start()
     {
         move_x = power_panels[0].GetComponent<RectTransform>().position.x - power_panels[1].GetComponent<RectTransform>().position.x;
-        print(move_x);
-
         
-
     }
 
     public void onNextClicked()

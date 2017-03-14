@@ -7,6 +7,7 @@ public class MonsterMove : MonoBehaviour {
     public float monsterspeed = -10f;
     Rigidbody rb;
     float random_z; //range from 2.12 to 8.9
+    GameObject levelcontroller;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,7 @@ public class MonsterMove : MonoBehaviour {
         {
             random_z = Random.Range(2.12f , 8.9f);
         }
+        levelcontroller = GameObject.FindGameObjectWithTag("LevelController");
     }
 
     private void FixedUpdate()
@@ -24,6 +26,10 @@ public class MonsterMove : MonoBehaviour {
         {
             rb.velocity = Vector3.zero;
             gameObject.GetComponent<MonsterShoot>().enabled = true;
+        }
+        if(levelcontroller.GetComponent<LevelController>().getGamePaused() == true)
+        {
+            rb.velocity = Vector3.zero;
         }
     }
 

@@ -25,7 +25,11 @@ public class LevelController : MonoBehaviour {
     GameObject marble_controller, wall_health_controller;
     bool game_over = false;
     JsonData config_data;
-
+    public GameObject power_select_panel;
+    public GameObject[] powers , displayed_powers;
+    int[] powers_selected = { 1, 2 };
+    public RectTransform[] display_positions;
+    private bool gamepaused = false;
 
     // Use this for initialization
     void Start () {
@@ -36,7 +40,6 @@ public class LevelController : MonoBehaviour {
         marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
         wall_health_controller = GameObject.FindGameObjectWithTag("wallhealthcontroller");
 
-        level_text.text = "LEVEL " + level_no;
         level_ht = new Hashtable();
         level_ht.Add("x", 50f);
         level_ht.Add("y", 50f);
@@ -45,7 +48,6 @@ public class LevelController : MonoBehaviour {
         level_ht.Add("oncomplete", "onLevelAnimationComplete");
         level_ht.Add("oncompletetarget", gameObject);
         level_ht.Add("easetype", iTween.EaseType.easeInCirc);
-        iTween.ShakePosition(level_text.gameObject, level_ht);
 
 
         //initializing first wave
@@ -112,9 +114,12 @@ public class LevelController : MonoBehaviour {
 
     public void startWaveAnimation()
     {
-        wave_rend[0].SetActive(true);
-        tank_canshoot = true;
-        can_render_next = true;
+        if (gamepaused == false)
+        {
+            wave_rend[0].SetActive(true);
+            tank_canshoot = true;
+            can_render_next = true;
+        }
     }
 
     public void onWaveAnimationComplete()
@@ -177,6 +182,54 @@ public class LevelController : MonoBehaviour {
     public bool getTankShootStatus()
     {
         return this.tank_canshoot;
+    }
+
+
+    public void onSelectmenupowerclicked(int power_status)
+    {
+        if (power_status != powers_selected[0] && power_status != powers_selected[1])
+        {
+            powers_selected[0] = powers_selected[1];
+            powers_selected[1] = power_status;
+            for (int i = 0; i < powers.Length; i++)
+            {
+                if (powers[i].GetComponent<MyPowerStatus>().getPower_status() == powers_selected[0] || powers[i].GetComponent<MyPowerStatus>().getPower_status() == powers_selected[1])
+                {
+                    powers[i].transform.GetChild(1).gameObject.SetActive(true);
+                }
+                else
+                {
+                    powers[i].transform.GetChild(1).gameObject.SetActive(false);
+                }
+            }
+            
+        }
+        
+    } 
+
+    public void setGamePaused(bool new_game_paused)
+    {
+        this.gamepaused = new_game_paused;
+    }
+
+    public bool getGamePaused()
+    {
+        return this.gamepaused;
+    }
+    public void onPowersSelected()
+    {
+        for (int i = 0; i < powers_selected.Length; i++)
+        {
+            displayed_powers[powers_selected[i] - 1].SetActive(true);
+            displayed_powers[powers_selected[i] - 1].GetComponent<RectTransform>().anchorMin = display_positions[i].anchorMin;
+            displayed_powers[powers_selected[i] - 1].GetComponent<RectTransform>().anchorMax = display_positions[i].anchorMax;
+            displayed_powers[powers_selected[i] - 1].GetComponent<RectTransform>().pivot = display_positions[i].pivot;
+            displayed_powers[powers_selected[i] - 1].GetComponent<RectTransform>().anchoredPosition = display_positions[i].anchoredPosition;
+
+        }
+        level_text.text = "LEVEL " + level_no;
+        iTween.ShakePosition(level_text.gameObject, level_ht);
+        power_select_panel.GetComponent<AnimateUpgradePanel>().playDownAnimation();
     }
 
 

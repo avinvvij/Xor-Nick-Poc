@@ -6,39 +6,44 @@ using UnityEngine.EventSystems;
 
 public class FollowTouch : MonoBehaviour {
 
-    public Button[] buttons;
+    GameObject level_controller;
 
 	// Use this for initialization
 	void Start () {
+        level_controller = GameObject.FindGameObjectWithTag("LevelController");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+        if (level_controller.GetComponent<LevelController>().getTankShootStatus() == true)
         {
+            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+            {
 
-            Vector3 targetpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if(targetpos.z > -8.8f)
-            {
-                gameObject.transform.position = new Vector3(targetpos.x, gameObject.transform.position.y, targetpos.z);
-            }
-         
-        } else
-        {
-            if(Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                if ((touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved))
+                Vector3 targetpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (targetpos.z > -8.8f)
                 {
-                    Plane plane = new Plane(Vector3.up, transform.position);
-                    Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                    float dist;
-                    if (plane.Raycast(ray, out dist))
+                    gameObject.transform.position = new Vector3(targetpos.x, gameObject.transform.position.y, targetpos.z);
+                }
+
+            }
+            else
+            {
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    if ((touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved))
                     {
-                        Vector3 targetpos = ray.GetPoint(dist);
-                        if (targetpos.z > -8.8f)
+                        Plane plane = new Plane(Vector3.up, transform.position);
+                        Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                        float dist;
+                        if (plane.Raycast(ray, out dist))
                         {
-                            transform.position = targetpos;
+                            Vector3 targetpos = ray.GetPoint(dist);
+                            if (targetpos.z > -8.8f)
+                            {
+                                transform.position = targetpos;
+                            }
                         }
                     }
                 }

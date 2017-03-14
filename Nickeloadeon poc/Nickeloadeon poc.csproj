@@ -111,6 +111,7 @@
     <Compile Include="Assets\scripts\LoadTheLevel.cs" />
     <Compile Include="Assets\scripts\ManageAnimationSpeed.cs" />
     <Compile Include="Assets\scripts\ManageMarbleAnimation.cs" />
+    <Compile Include="Assets\scripts\ManagePauseClick.cs" />
     <Compile Include="Assets\scripts\MarbleAnimation.cs" />
     <Compile Include="Assets\scripts\MarbleScoreController.cs" />
     <Compile Include="Assets\scripts\MonsterBulletController.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Assets\scripts\MonsterMove.cs" />
     <Compile Include="Assets\scripts\MonsterShoot.cs" />
     <Compile Include="Assets\scripts\MoveOnPath.cs" />
+    <Compile Include="Assets\scripts\MyPowerStatus.cs" />
     <Compile Include="Assets\scripts\OnUpgradeWallClicked.cs" />
     <Compile Include="Assets\scripts\PanController.cs" />
     <Compile Include="Assets\scripts\ParticleController.cs" />
