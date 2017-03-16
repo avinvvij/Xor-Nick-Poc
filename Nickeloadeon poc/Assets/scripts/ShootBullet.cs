@@ -12,6 +12,8 @@ public class ShootBullet : MonoBehaviour {
     GameObject tank_smoke;
     GameObject level_controller;
     LevelController level_controller_script;
+    AudioSource shoot_audio;
+
     // Use this for initialization
     void Start () {
         level_controller = GameObject.FindGameObjectWithTag("LevelController");
@@ -24,6 +26,9 @@ public class ShootBullet : MonoBehaviour {
         ht.Add("onstart", "makeashoot");
         iTween.MoveTo(gameObject, ht);
         shootray = new Ray();
+
+        //initializing sound
+        shoot_audio = gameObject.GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -46,8 +51,11 @@ public class ShootBullet : MonoBehaviour {
 
             mybullet.GetComponent<Rigidbody>().AddForce(new Vector3(direction1.x , 0.0f , direction1.z)* 30 * bulletspeed, ForceMode.Impulse);
             tank_smoke.SetActive(true);
-            shootray.origin = gameObject.transform.GetChild(0).transform.position;
-            shootray.direction = direction;
+           // shootray.origin = gameObject.transform.GetChild(0).transform.position;
+           // shootray.direction = direction;
+
+            //playing the sound
+            shoot_audio.Play();
             Invoke("switchOffLight", 0.2f);
         }
         canshoot = !canshoot;

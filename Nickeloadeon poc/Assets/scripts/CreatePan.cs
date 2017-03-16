@@ -13,9 +13,13 @@ public class CreatePan : MonoBehaviour {
     GameObject marble_controller;
     MarbleScoreController marble_score;
     GameObject level_controller;
+    AudioSource pan_hit;
 
     // Use this for initialization
     void Start () {
+        //initializing sound
+        pan_hit = gameObject.GetComponent<AudioSource>();
+
         level_controller = GameObject.FindGameObjectWithTag("LevelController");
         start_time = Time.time;
         loading_image.fillAmount = 1f;
@@ -36,7 +40,8 @@ public class CreatePan : MonoBehaviour {
                 Vector3 instantiate_pan_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 instantiate_pan_position = new Vector3(instantiate_pan_position.x, 2.313f, instantiate_pan_position.z);
                 GameObject mypan = (GameObject)Instantiate(pan, instantiate_pan_position, pan.transform.rotation);
-
+                //playing pan sound
+                pan_hit.Play();
                 mypan.transform.position = new Vector3(instantiate_pan_position.x, 2.313f, instantiate_pan_position.z - Mathf.Abs(instantiate_pan_position.z - mypan.transform.GetChild(0).transform.position.z));
                 generatepan = false;
             }
@@ -48,11 +53,13 @@ public class CreatePan : MonoBehaviour {
                 Touch touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Began && generatepan == true)
                 {
+
                     Vector3 instantiate_pan_position = Camera.main.ScreenToWorldPoint(touch.position);
                     instantiate_pan_position = new Vector3(instantiate_pan_position.x, 2.313f, instantiate_pan_position.z);
                     GameObject mypan = (GameObject) Instantiate(pan, instantiate_pan_position, pan.transform.rotation);
-                    
                     mypan.transform.position = new Vector3(instantiate_pan_position.x, 2.313f, instantiate_pan_position.z - Mathf.Abs(instantiate_pan_position.z - mypan.transform.GetChild(0).transform.position.z));
+                    //playing pan sound
+                    pan_hit.Play();
                     generatepan = false;
                 }
             }

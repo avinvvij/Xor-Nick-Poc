@@ -11,15 +11,21 @@ public class MonsterHealthController : MonoBehaviour {
     Image blood_pd_img;
     public GameObject blue_marble,green_marble,red_marble;
     public int marbles_generated;
+    AudioSource monster_death_sound;
+    GameObject monster_death_sound_gameobject;
 	
 	void Start () {
         animation_handler = this.transform.GetChild(0).GetComponent<Animator>();
-	}
+        monster_death_sound_gameobject = GameObject.FindGameObjectWithTag("monster_death_sound");
+        monster_death_sound = monster_death_sound_gameobject.GetComponent<AudioSource>();
+    }
 	
 	
 	void Update () {
+
         if (this.health <= 0)
         {
+            monster_death_sound.Play();
             float x_factor = 0.0f;
             for(int i = 0; i < marbles_generated; i++)
             {
@@ -43,6 +49,7 @@ public class MonsterHealthController : MonoBehaviour {
             GameObject bp = (GameObject) Instantiate(blood_puddle, gameObject.transform.position - new Vector3(0f,2f,0f) , Quaternion.Euler(90f , 0f, 0f));
             blood_pd_img = bp.GetComponentInChildren<Image>();
             blood_pd_img.color = gameObject.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.GetColor("_Color");
+            
             if (gameObject.name == "monster4_main")
             {
                 Destroy(gameObject.transform.parent.gameObject);

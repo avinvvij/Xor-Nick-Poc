@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using LitJson;
+using UnityStandardAssets.ImageEffects;
 
 public class LevelController : MonoBehaviour {
 
@@ -30,6 +31,7 @@ public class LevelController : MonoBehaviour {
     int[] powers_selected = { 1, 2 };
     public RectTransform[] display_positions;
     private bool gamepaused = false;
+    public GameObject pause_button;
 
     // Use this for initialization
     void Start () {
@@ -114,12 +116,11 @@ public class LevelController : MonoBehaviour {
 
     public void startWaveAnimation()
     {
-        if (gamepaused == false)
-        {
+        
             wave_rend[0].SetActive(true);
             tank_canshoot = true;
             can_render_next = true;
-        }
+        
     }
 
     public void onWaveAnimationComplete()
@@ -165,7 +166,12 @@ public class LevelController : MonoBehaviour {
 
     public void display_GameoverPanel()
     {
-
+        Camera.main.gameObject.GetComponent<Grayscale>().enabled = true;
+        Camera.main.gameObject.GetComponent<BlurOptimized>().enabled = true;
+        for (int i = 0; i < powers_selected.Length; i++)
+        {
+            displayed_powers[powers_selected[i] - 1].SetActive(false);
+        }
         after_game_marble_count.text = marble_controller.GetComponent<MarbleScoreController>().getMarbleCount() + "";
         after_game_wall_health.text = wall_health_controller.GetComponent<WallHealthController>().getWallHealth() + "%";
         int coins = marble_controller.GetComponent<MarbleScoreController>().getMarbleCount() + wall_health_controller.GetComponent<WallHealthController>().getWallHealth();
@@ -177,6 +183,7 @@ public class LevelController : MonoBehaviour {
         }
         after_game_panel.SetActive(true);
         tank_canshoot = false;
+        pause_button.SetActive(false);
     }
 
     public bool getTankShootStatus()
@@ -218,6 +225,17 @@ public class LevelController : MonoBehaviour {
     }
     public void onPowersSelected()
     {
+        Camera.main.GetComponent<Grayscale>().enabled = false;
+        Camera.main.GetComponent<BlurOptimized>().enabled = false;
+        pause_button.SetActive(true);
+        displayPowers();
+        level_text.text = "LEVEL " + level_no;
+        iTween.ShakePosition(level_text.gameObject, level_ht);
+        power_select_panel.GetComponent<AnimateUpgradePanel>().playDownAnimation();
+    }
+
+    public void displayPowers()
+    {
         for (int i = 0; i < powers_selected.Length; i++)
         {
             displayed_powers[powers_selected[i] - 1].SetActive(true);
@@ -225,13 +243,9 @@ public class LevelController : MonoBehaviour {
             displayed_powers[powers_selected[i] - 1].GetComponent<RectTransform>().anchorMax = display_positions[i].anchorMax;
             displayed_powers[powers_selected[i] - 1].GetComponent<RectTransform>().pivot = display_positions[i].pivot;
             displayed_powers[powers_selected[i] - 1].GetComponent<RectTransform>().anchoredPosition = display_positions[i].anchoredPosition;
-
+            displayed_powers[powers_selected[i] - 1].tag = "selected_power";
         }
-        level_text.text = "LEVEL " + level_no;
-        iTween.ShakePosition(level_text.gameObject, level_ht);
-        power_select_panel.GetComponent<AnimateUpgradePanel>().playDownAnimation();
     }
-
 
     public static class JsonHelper
     {

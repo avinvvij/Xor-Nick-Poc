@@ -18,7 +18,7 @@ public class AnimateUpgradePanel : MonoBehaviour {
         move_factor = gameObject.transform.parent.transform.position.y;
         anim_ht.Add("y", move_factor);
         anim_ht.Add("time", time_factor);
-
+        anim_ht.Add("oncomplete", "onUpAnimationComplete");
         iTween.MoveTo(gameObject, anim_ht);
         anim_down_ht = new Hashtable();
         anim_down_ht.Add("y", initpos.y);
@@ -33,8 +33,18 @@ public class AnimateUpgradePanel : MonoBehaviour {
         move_factor = gameObject.transform.parent.transform.position.y;
         anim_ht.Add("y", move_factor);
         anim_ht.Add("time", time_factor);
+        anim_ht.Add("oncomplete", "onUpAnimationComplete");
         iTween.MoveTo(gameObject, anim_ht);
         
+    }
+
+    public void onUpAnimationComplete()
+    {
+        //if pause screen panel
+        if (gameObject.name == "game_paused_panel")
+        {
+            Time.timeScale = 0;
+        }
     }
 
     public void onCloseClicked()

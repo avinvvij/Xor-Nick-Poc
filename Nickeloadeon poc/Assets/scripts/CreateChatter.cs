@@ -12,6 +12,7 @@ public class CreateChatter : MonoBehaviour {
     GameObject marble_controller;
     MarbleScoreController marble_score;
     GameObject level_controller;
+    bool update_flag = false;
 
     private void Start()
     {
@@ -24,10 +25,11 @@ public class CreateChatter : MonoBehaviour {
 
     private void Update()
     {
-        if(start_time > Time.time)
-        {
-            loading_image.fillAmount += 1.0f / time_interval * Time.deltaTime;
-        }
+            if (start_time > Time.time)
+            {
+                loading_image.fillAmount += 1.0f / time_interval * Time.deltaTime;
+            }
+        
     }
 
     public void createChatter()
