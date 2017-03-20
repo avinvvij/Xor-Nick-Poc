@@ -20,11 +20,14 @@ public class ShootBullet : MonoBehaviour {
         level_controller_script = level_controller.GetComponent<LevelController>();
         tank_smoke = transform.GetChild(0).transform.GetChild(0).gameObject;
         ht = new Hashtable();
+        ht.Add("name", "tankanim");
         ht.Add("z", gameObject.transform.position.z + 0.3f);
         ht.Add("time" , bulletcreatetime);
         ht.Add("looptype",iTween.LoopType.pingPong);
         ht.Add("onstart", "makeashoot");
         iTween.MoveTo(gameObject, ht);
+        iTween.Pause(gameObject);
+        
         shootray = new Ray();
 
         //initializing sound
@@ -55,7 +58,8 @@ public class ShootBullet : MonoBehaviour {
            // shootray.direction = direction;
 
             //playing the sound
-            shoot_audio.Play();
+            if(PlayerPrefs.GetInt("sound_effect" , 1) == 1)
+                shoot_audio.Play();
             Invoke("switchOffLight", 0.2f);
         }
         canshoot = !canshoot;

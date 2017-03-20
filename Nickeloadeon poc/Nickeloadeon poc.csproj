@@ -90,12 +90,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ManageHomeClick.cs" />
     <Compile Include="Assets\Plugin\HockeyAppUnityAndroid\HockeyAppUnity-Scripts\HockeyAppAndroid.cs" />
     <Compile Include="Assets\scripts\AnimateHorizontalUi.cs" />
     <Compile Include="Assets\scripts\AnimateUpgradePanel.cs" />
     <Compile Include="Assets\scripts\AnimateWater.cs" />
     <Compile Include="Assets\scripts\ChatterKillMonster.cs" />
+    <Compile Include="Assets\scripts\CoinAnimationComplete.cs" />
+    <Compile Include="Assets\scripts\CoinUpgradeAnimation.cs" />
     <Compile Include="Assets\scripts\CollisionBullet.cs" />
     <Compile Include="Assets\scripts\CollisionCrate.cs" />
     <Compile Include="Assets\scripts\CollisionMonster.cs" />
@@ -111,7 +112,10 @@
     <Compile Include="Assets\scripts\LevelController.cs" />
     <Compile Include="Assets\scripts\LoadTheLevel.cs" />
     <Compile Include="Assets\scripts\ManageAnimationSpeed.cs" />
+    <Compile Include="Assets\scripts\ManageChatterSound.cs" />
+    <Compile Include="Assets\scripts\ManageHomeClick.cs" />
     <Compile Include="Assets\scripts\ManageMarbleAnimation.cs" />
+    <Compile Include="Assets\scripts\ManageMenuScreenSounds.cs" />
     <Compile Include="Assets\scripts\ManagePauseClick.cs" />
     <Compile Include="Assets\scripts\MarbleAnimation.cs" />
     <Compile Include="Assets\scripts\MarbleScoreController.cs" />
@@ -131,6 +135,8 @@
     <Compile Include="Assets\scripts\RotateBulet.cs" />
     <Compile Include="Assets\scripts\RotateGun.cs" />
     <Compile Include="Assets\scripts\RotateToPoint.cs" />
+    <Compile Include="Assets\scripts\ScaleAnimationComplete.cs" />
+    <Compile Include="Assets\scripts\SettingsEventHandler.cs" />
     <Compile Include="Assets\scripts\ShootBullet.cs" />
     <Compile Include="Assets\scripts\TouchCameraMover.cs" />
     <Compile Include="Assets\scripts\TurnMonsterToFriend.cs" />

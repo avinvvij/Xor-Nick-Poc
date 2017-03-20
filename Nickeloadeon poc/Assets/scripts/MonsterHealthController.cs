@@ -12,12 +12,15 @@ public class MonsterHealthController : MonoBehaviour {
     public GameObject blue_marble,green_marble,red_marble;
     public int marbles_generated;
     AudioSource monster_death_sound;
+    AudioSource monster_squeak_sound;
     GameObject monster_death_sound_gameobject;
 	
 	void Start () {
         animation_handler = this.transform.GetChild(0).GetComponent<Animator>();
         monster_death_sound_gameobject = GameObject.FindGameObjectWithTag("monster_death_sound");
         monster_death_sound = monster_death_sound_gameobject.GetComponent<AudioSource>();
+        monster_squeak_sound = gameObject.GetComponent<AudioSource>();
+
     }
 	
 	
@@ -25,7 +28,8 @@ public class MonsterHealthController : MonoBehaviour {
 
         if (this.health <= 0)
         {
-            monster_death_sound.Play();
+            if(PlayerPrefs.GetInt("sound_effect",1) == 1)
+                monster_death_sound.Play();
             float x_factor = 0.0f;
             for(int i = 0; i < marbles_generated; i++)
             {
@@ -81,7 +85,10 @@ public class MonsterHealthController : MonoBehaviour {
         {
             GetComponent<FlyingMonsterPath>().enabled = false;
         }
-            Invoke("stopBulletAnimation", 0.15f);
+        if (PlayerPrefs.GetInt("sound_effect", 1) == 1)
+            monster_squeak_sound.Play();
+
+        Invoke("stopBulletAnimation", 0.15f);
     }
 
     public void stopBulletAnimation()

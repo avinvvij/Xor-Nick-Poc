@@ -45,6 +45,8 @@ public class LevelConfiguration : MonoBehaviour {
             string json_text_string = "{\"version\":\"1\" , \"level_reached\":\""+level_reached+"\" , \"coins_collected\":\"0\"}";
             File.WriteAllText(Application.persistentDataPath + "\\configuration.json", json_text_string);
         }
+
+        coin_count.text = configdata["coins_collected"].ToString();
         for (int i = 0;i < int.Parse(configdata["level_reached"].ToString()) ; i++)
         {
             button_names[i].transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
@@ -52,7 +54,6 @@ public class LevelConfiguration : MonoBehaviour {
             button_names[i].transform.GetChild(0).GetComponent<Button>().enabled = true;
             tank.transform.position = button_names[i].GetComponent<RectTransform>().position - new Vector3(move_factor , 0.0f , 0.0f);
         }
-        coin_count.text = configdata["coins_collected"].ToString();
     }
 	
 	

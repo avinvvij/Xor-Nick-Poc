@@ -41,7 +41,8 @@ public class CreatePan : MonoBehaviour {
                 instantiate_pan_position = new Vector3(instantiate_pan_position.x, 2.313f, instantiate_pan_position.z);
                 GameObject mypan = (GameObject)Instantiate(pan, instantiate_pan_position, pan.transform.rotation);
                 //playing pan sound
-                pan_hit.Play();
+                if(PlayerPrefs.GetInt("sound_effect",1)==1)
+                    pan_hit.Play();
                 mypan.transform.position = new Vector3(instantiate_pan_position.x, 2.313f, instantiate_pan_position.z - Mathf.Abs(instantiate_pan_position.z - mypan.transform.GetChild(0).transform.position.z));
                 generatepan = false;
             }

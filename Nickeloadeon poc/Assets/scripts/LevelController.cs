@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour {
     private int level_no = 1;
     private int wave_no = 0;
     public Text level_text;
+    public GameObject tank_player;
     public bool tank_canshoot = false;
     Hashtable level_ht , wave_ht;
     bool canshowlevel = false;
@@ -33,6 +34,8 @@ public class LevelController : MonoBehaviour {
     private bool gamepaused = false;
     public GameObject pause_button;
 
+    AudioSource back_audio;
+    public AudioSource victory_sound , crowd_boo_sound;
     // Use this for initialization
     void Start () {
 
@@ -51,6 +54,12 @@ public class LevelController : MonoBehaviour {
         level_ht.Add("oncompletetarget", gameObject);
         level_ht.Add("easetype", iTween.EaseType.easeInCirc);
 
+        //initializing sound
+        back_audio = GetComponent<AudioSource>();
+        if(PlayerPrefs.GetInt("back_music",1) == 0)
+        {
+            back_audio.Stop();
+        }
 
         //initializing first wave
         TextAsset json_string = Resources.Load<TextAsset>("level_"+level_no+"wave_0");
@@ -134,8 +143,9 @@ public class LevelController : MonoBehaviour {
             can_render_next = true;
         }else
         {
-            display_GameoverPanel();
             after_game_text.text = "Victory";
+            display_GameoverPanel();
+            
             wave_rend[wave_no].SetActive(false);
             tank_canshoot = false;
         }
@@ -166,6 +176,7 @@ public class LevelController : MonoBehaviour {
 
     public void display_GameoverPanel()
     {
+        iTween.Pause(tank_player, true);
         Camera.main.gameObject.GetComponent<Grayscale>().enabled = true;
         Camera.main.gameObject.GetComponent<BlurOptimized>().enabled = true;
         for (int i = 0; i < powers_selected.Length; i++)
@@ -184,6 +195,20 @@ public class LevelController : MonoBehaviour {
         after_game_panel.SetActive(true);
         tank_canshoot = false;
         pause_button.SetActive(false);
+        if(after_game_text.text == "Victory")
+        {
+            if (PlayerPrefs.GetInt("sound_effect", 1) == 1)
+            {
+                victory_sound.Play();
+            }
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("sound_effect", 1) == 1)
+            {
+                crowd_boo_sound.Play();
+            }
+        }
     }
 
     public bool getTankShootStatus()
@@ -231,6 +256,7 @@ public class LevelController : MonoBehaviour {
         displayPowers();
         level_text.text = "LEVEL " + level_no;
         iTween.ShakePosition(level_text.gameObject, level_ht);
+        iTween.Resume(tank_player, true);
         power_select_panel.GetComponent<AnimateUpgradePanel>().playDownAnimation();
     }
 
