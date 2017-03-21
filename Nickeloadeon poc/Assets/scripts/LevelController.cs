@@ -36,8 +36,36 @@ public class LevelController : MonoBehaviour {
 
     AudioSource back_audio;
     public AudioSource victory_sound , crowd_boo_sound;
+
+
+
+    //declaring variable for bullet , powers damage
+    int damage_by_bullet, damage_by_chatter, damage_by_pan, damage_by_monsterfriend;
+    int wall_health;
+    JsonData progress_data;
+
     // Use this for initialization
     void Start () {
+
+        //initializing damages
+        progress_data = JsonMapper.ToObject(File.ReadAllText(Application.persistentDataPath + "\\playerprogress.json"));
+        damage_by_bullet = int.Parse(progress_data["attack"][0]["attack"].ToString());
+        wall_health = int.Parse(progress_data["defence"][0]["attack"].ToString());
+        for(int i = 0; i < progress_data["powers"].Count; i++)
+        {
+            switch (progress_data["powers"][i]["name"].ToString())
+            {
+                case "creepychatter":
+                    damage_by_chatter = int.Parse(progress_data["powers"][i]["attack"].ToString());
+                    break;
+                case "hitpan":
+                    damage_by_pan = int.Parse(progress_data["powers"][i]["attack"].ToString());
+                    break;
+                case "monsterfriend":
+                    damage_by_monsterfriend = int.Parse(progress_data["powers"][i]["attack"].ToString());
+                    break;
+            }
+        }
 
         string json_text = File.ReadAllText(Application.persistentDataPath + "\\configuration.json");
         config_data = JsonMapper.ToObject(json_text);
@@ -238,6 +266,21 @@ public class LevelController : MonoBehaviour {
         }
         
     } 
+
+    public int getBulletDamage()
+    {
+        return this.damage_by_bullet;
+    }
+
+    public int getDamageByChatter()
+    {
+        return this.damage_by_chatter;
+    }
+
+    public int getDamageByPan()
+    {
+        return this.damage_by_pan;
+    }
 
     public void setGamePaused(bool new_game_paused)
     {

@@ -10,11 +10,14 @@ using System;
 public class LevelConfiguration : MonoBehaviour {
 
     private JsonData configdata;
+    private JsonData progress_data;
     GameObject[] level_buttons;
     List<GameObject> button_names;
     public GameObject tank;
     public float move_factor = 1.2f;
     public Text coin_count;
+    public GameObject attack_panel, defence_panel;
+    public GameObject[] power_panels; 
 
 	// Use this for initialization
 	void Start () {
@@ -54,6 +57,29 @@ public class LevelConfiguration : MonoBehaviour {
             button_names[i].transform.GetChild(0).GetComponent<Button>().enabled = true;
             tank.transform.position = button_names[i].GetComponent<RectTransform>().position - new Vector3(move_factor , 0.0f , 0.0f);
         }
+
+        //playerprogess setup
+        if (!File.Exists(Application.persistentDataPath + "\\playerprogress.json"))
+        {
+            string json_text_string = "{\"version\":\"1\",\"attack\":[{\"name\":\"mechimgun\",\"attack\":\"10\",\"next_update\":\"20\",\"update_cost\":\"500\"}],"+
+	        "\"defence\":[{\"name\":\"cratewall\",\"attack\":\"100\",\"next_update\":\"150\",\"update_cost\":\"700\"}],\"powers\":[{\"name\":\"creepychatter\",\"attack\":\"20\",\"next_update\":\"30\",\"update_cost\":\"300\"},{"+
+	        "\"name\":\"hitpan\",\"attack\":\"20\",\"next_update\":\"30\",\"update_cost\":\"500\"},{\"name\":\"monsterfriend\",\"attack\":\"10\",\"next_update\":\"15\",\"update_cost\":\"200\"}]}";
+            File.WriteAllText(Application.persistentDataPath + "\\playerprogress.json", json_text_string);
+        }
+
+        progress_data = JsonMapper.ToObject(File.ReadAllText(Application.persistentDataPath + "\\playerprogress.json"));
+        //initialize attack panel
+        attack_panel.transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).GetComponent<Text>().text = progress_data["attack"][0]["update_cost"].ToString();
+        attack_panel.transform.GetChild(0).transform.GetChild(0).transform.GetChild(4).GetComponent<Slider>().value = int.Parse(progress_data["attack"][0]["attack"].ToString());
+        //initialize defence panel
+        defence_panel.transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).GetComponent<Text>().text = progress_data["defence"][0]["update_cost"].ToString();
+        defence_panel.transform.GetChild(0).transform.GetChild(0).transform.GetChild(4).GetComponent<Slider>().value = int.Parse(progress_data["defence"][0]["attack"].ToString());
+        //initialize powers panel
+        for(int i = 0; i < progress_data["powers"].Count; i++)
+        {
+            power_panels[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).GetComponent<Text>().text = progress_data["powers"][i]["update_cost"].ToString();
+            power_panels[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(4).GetComponent<Slider>().value = int.Parse(progress_data["powers"][i]["attack"].ToString());
+        }
     }
 	
 	
@@ -76,6 +102,26 @@ public class LevelConfiguration : MonoBehaviour {
         
     }
 
+
+    public void UiUpdate()
+    {
+        string jsonString = File.ReadAllText(Application.persistentDataPath + "\\configuration.json");
+        configdata = JsonMapper.ToObject(jsonString);
+        coin_count.text = configdata["coins_collected"].ToString();
+        progress_data = JsonMapper.ToObject(File.ReadAllText(Application.persistentDataPath + "\\playerprogress.json"));
+        //initialize attack panel
+        attack_panel.transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).GetComponent<Text>().text = progress_data["attack"][0]["update_cost"].ToString();
+        attack_panel.transform.GetChild(0).transform.GetChild(0).transform.GetChild(4).GetComponent<Slider>().value = int.Parse(progress_data["attack"][0]["attack"].ToString());
+        //initialize defence panel
+        defence_panel.transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).GetComponent<Text>().text = progress_data["defence"][0]["update_cost"].ToString();
+        defence_panel.transform.GetChild(0).transform.GetChild(0).transform.GetChild(4).GetComponent<Slider>().value = int.Parse(progress_data["defence"][0]["attack"].ToString());
+        //initialize powers panel
+        for (int i = 0; i < progress_data["powers"].Count; i++)
+        {
+            power_panels[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).GetComponent<Text>().text = progress_data["powers"][i]["update_cost"].ToString();
+            power_panels[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(4).GetComponent<Slider>().value = int.Parse(progress_data["powers"][i]["attack"].ToString());
+        }
+    }
 
 
 }
