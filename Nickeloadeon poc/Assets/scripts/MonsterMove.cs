@@ -31,6 +31,26 @@ public class MonsterMove : MonoBehaviour {
         {
             rb.velocity = Vector3.zero;
         }
+
+
+        if(gameObject.transform.position.x <= -7.1f)
+        {
+            Hashtable anim_move = new Hashtable();
+            anim_move.Add("x", -7.0f);
+            anim_move.Add("time", 0.2f);
+            anim_move.Add("easetype", iTween.EaseType.linear);
+            iTween.MoveTo(gameObject, anim_move);
+        }
+
+        if (gameObject.transform.position.x >=  7.1f)
+        {
+            Hashtable anim_move = new Hashtable();
+            anim_move.Add("x", 7.0f);
+            anim_move.Add("time", 0.2f);
+            anim_move.Add("easetype", iTween.EaseType.linear);
+            iTween.MoveTo(gameObject, anim_move);
+        }
+
     }
 
     public float getMonsterSpeed()

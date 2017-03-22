@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugin\HockeyAppUnityAndroid\HockeyAppUnity-Scripts\HockeyAppAndroid.cs" />
+    <Compile Include="Assets\scripts\AnimateClouds.cs" />
     <Compile Include="Assets\scripts\AnimateHorizontalUi.cs" />
     <Compile Include="Assets\scripts\AnimateUpgradePanel.cs" />
     <Compile Include="Assets\scripts\AnimateWater.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Assets\scripts\SettingsEventHandler.cs" />
     <Compile Include="Assets\scripts\ShootBullet.cs" />
     <Compile Include="Assets\scripts\TouchCameraMover.cs" />
+    <Compile Include="Assets\scripts\TriggerCloudAnimation.cs" />
     <Compile Include="Assets\scripts\TurnMonsterToFriend.cs" />
     <Compile Include="Assets\scripts\UiUpgradeAnimation.cs" />
     <Compile Include="Assets\scripts\UpgradUiButtonClick.cs" />
