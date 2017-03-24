@@ -89,38 +89,41 @@ public class LevelController : MonoBehaviour {
             back_audio.Stop();
         }
 
+
+        gameObject.GetComponent<WaveAssignment>().generate_waves(wave_parents , monster_gameobjects);
+
         //initializing first wave
-        TextAsset json_string = Resources.Load<TextAsset>("level_"+level_no+"wave_0");
-        string myjson_string = json_string.text;
-        Monster[] monsters = JsonHelper.FromJson<Monster>(myjson_string);
-        for (int i = 0; i < monsters.Length; i++)
-        {
-            GameObject temp_monster = (GameObject) Instantiate(monster_gameobjects[int.Parse(monsters[i].type)], monsters[i].set_pos(), monster_gameobjects[int.Parse(monsters[i].type)].transform.rotation);
-            temp_monster.transform.parent = wave_parents[0].transform;
-        }
-        wave_parents[0].SetActive(false);
+        //TextAsset json_string = Resources.Load<TextAsset>("level_"+level_no+"wave_0");
+        //string myjson_string = json_string.text;
+        //Monster[] monsters = JsonHelper.FromJson<Monster>(myjson_string);
+        //for (int i = 0; i < monsters.Length; i++)
+        //{
+        //    GameObject temp_monster = (GameObject) Instantiate(monster_gameobjects[int.Parse(monsters[i].type)], monsters[i].set_pos(), monster_gameobjects[int.Parse(monsters[i].type)].transform.rotation);
+        //    temp_monster.transform.parent = wave_parents[0].transform;
+        //}
+        //wave_parents[0].SetActive(false);
 
         //initializing second wave
-        json_string = Resources.Load<TextAsset>("level_" + level_no + "wave_1");
-        myjson_string = json_string.text;
-        monsters = JsonHelper.FromJson<Monster>(myjson_string);
-        for (int i = 0; i < monsters.Length; i++)
-        {
-            GameObject temp_monster = (GameObject)Instantiate(monster_gameobjects[int.Parse(monsters[i].type)], monsters[i].set_pos(), monster_gameobjects[int.Parse(monsters[i].type)].transform.rotation);
-            temp_monster.transform.parent = wave_parents[1].transform;
-        }
-        wave_parents[1].SetActive(false);
+        //json_string = Resources.Load<TextAsset>("level_" + level_no + "wave_1");
+        //myjson_string = json_string.text;
+        //monsters = JsonHelper.FromJson<Monster>(myjson_string);
+        //for (int i = 0; i < monsters.Length; i++)
+        //{
+        //    GameObject temp_monster = (GameObject)Instantiate(monster_gameobjects[int.Parse(monsters[i].type)], monsters[i].set_pos(), monster_gameobjects[int.Parse(monsters[i].type)].transform.rotation);
+        //    temp_monster.transform.parent = wave_parents[1].transform;
+        //}
+        //wave_parents[1].SetActive(false);
 
         //initializing third wave
-        json_string = Resources.Load<TextAsset>("level_" + level_no + "wave_2");
-        myjson_string = json_string.text;
-        monsters = JsonHelper.FromJson<Monster>(myjson_string);
-        for (int i = 0; i < monsters.Length; i++)
-        {
-            GameObject temp_monster = (GameObject)Instantiate(monster_gameobjects[int.Parse(monsters[i].type)], monsters[i].set_pos(), monster_gameobjects[int.Parse(monsters[i].type)].transform.rotation);
-            temp_monster.transform.parent = wave_parents[2].transform;
-        }
-        wave_parents[2].SetActive(false);
+        //json_string = Resources.Load<TextAsset>("level_" + level_no + "wave_2");
+        //myjson_string = json_string.text;
+        //monsters = JsonHelper.FromJson<Monster>(myjson_string);
+        //for (int i = 0; i < monsters.Length; i++)
+        //{
+        //    GameObject temp_monster = (GameObject)Instantiate(monster_gameobjects[int.Parse(monsters[i].type)], monsters[i].set_pos(), monster_gameobjects[int.Parse(monsters[i].type)].transform.rotation);
+        //    temp_monster.transform.parent = wave_parents[2].transform;
+        //}
+        //wave_parents[2].SetActive(false);
 
     }
 
@@ -162,7 +165,7 @@ public class LevelController : MonoBehaviour {
 
     public void onWaveAnimationComplete()
     {
-        if (wave_no <= 2)
+        if (wave_no <= gameObject.GetComponent<WaveAssignment>().getWaveCount() -1)
         {
             wave_parents[wave_no].SetActive(true);
             current_wave_object = wave_parents[wave_no];
@@ -182,8 +185,13 @@ public class LevelController : MonoBehaviour {
     public void render_next_wave()
     {
         wave_rend[wave_no].SetActive(true);
-        if(wave_no == 3)
+        if(wave_no == gameObject.GetComponent<WaveAssignment>().getWaveCount())
         {
+            for(int i = 0;i < 5; i++)
+            {
+                wave_rend[i].SetActive(false);
+            }
+            wave_rend[5].SetActive(true);
             Instantiate(victory_particle, victory_particle.transform.position, victory_particle.transform.rotation);
             //unlock the next level
             int temp_level_no = int.Parse(config_data["level_reached"].ToString());

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FlyingMonsterPath : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class FlyingMonsterPath : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        mypathmanager = gameObject.transform.parent.transform.GetChild(0).GetComponent<PathEditor>();
+        
         last_position = transform.position;
     }
 
@@ -42,4 +43,10 @@ public class FlyingMonsterPath : MonoBehaviour
         }
 
     }
+
+    public void setpathManager( GameObject pathmanager) 
+    {
+        this.mypathmanager = pathmanager.GetComponent<PathEditor>();
+    }
+
 }

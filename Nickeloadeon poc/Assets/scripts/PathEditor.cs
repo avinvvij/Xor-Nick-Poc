@@ -17,9 +17,9 @@ public class PathEditor : MonoBehaviour
             node1 = gameObject.transform.GetChild(1).transform;
             node2 = gameObject.transform.GetChild(2).transform;
             float randomx = Random.Range(-7.2f, 7.2f);
-            node1.transform.position = new Vector3(randomx, node1.transform.position.y, node1.transform.position.z);
+            //node1.transform.position = new Vector3(randomx, node1.transform.position.y, node1.transform.position.z);
             randomx = Random.Range(-7.2f, 7.2f);
-            node2.transform.position = new Vector3(randomx, node2.transform.position.y, node2.transform.position.z);
+            //node2.transform.position = new Vector3(randomx, node2.transform.position.y, node2.transform.position.z);
         }
     }
 
@@ -46,6 +46,31 @@ public class PathEditor : MonoBehaviour
                 Gizmos.DrawLine(prevposition, position);
             }
             Gizmos.DrawWireSphere(position, 0.5f);
+        }
+    }
+
+
+    public void assign_node_positions()
+    {
+        tlist = GetComponentsInChildren<Transform>();
+        points.Clear();
+
+        foreach (Transform t in tlist)
+        {
+            if (t != this.transform)
+            {
+                points.Add(t);
+            }
+        }
+
+        for (int i = 0; i < points.Count; i++)
+        {
+            Vector3 position = points[i].position;
+            if (i > 0)
+            {
+                Vector3 prevposition = points[i - 1].position;
+            }
+            
         }
     }
 }

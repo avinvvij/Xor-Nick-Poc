@@ -96,7 +96,13 @@ public class MonsterHealthController : MonoBehaviour {
         animation_handler.SetBool("hitbybullet", false);
         if (gameObject.name != "monster4_main")
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 0.0f, 1f) * gameObject.GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
+            try
+            {
+                gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 0.0f, 1f) * gameObject.GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
+            }catch( System.Exception e)
+            {
+
+            }
         }
         else if(gameObject.GetComponent<CollisionCrate>().getcollisiontocrate() == false)
         {
