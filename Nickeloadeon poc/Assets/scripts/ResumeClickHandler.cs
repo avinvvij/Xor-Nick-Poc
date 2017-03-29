@@ -21,11 +21,6 @@ public class ResumeClickHandler : MonoBehaviour {
         Camera.main.gameObject.GetComponent<BlurOptimized>().enabled = false;
         level_controller.setGamePaused(false);
         level_controller.tank_canshoot = true;
-        monsters_on_screen = GameObject.FindGameObjectsWithTag("monster");
-        for (int i = 0; i < monsters_on_screen.Length; i++)
-        {
-            monsters_on_screen[i].GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 0.0f, 1f) * monsters_on_screen[i].GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
-        }
         Time.timeScale = 1;
     }
 }

@@ -18,6 +18,7 @@ public class CollisionCrate : MonoBehaviour {
             if(gameObject.GetComponent<FlyingMonsterPath>() != null)
             {
                 gameObject.GetComponent<FlyingMonsterPath>().enabled = false;
+                iTween.Pause(gameObject);
             }
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             gameObject.GetComponent<Rigidbody>().drag = 1000f;

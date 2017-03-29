@@ -20,7 +20,7 @@ public class CollisionMonster : MonoBehaviour {
             if (gameObject.GetComponent<MonsterMove>() != null)
                 rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * gameObject.GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
             else
-                rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * -2f, ForceMode.Impulse);
+                gameObject.GetComponent<FlyingMonsterPath>().enabled = true;
             forceadded = true;
             triggered = false;
             count = 0;
@@ -96,7 +96,7 @@ public class CollisionMonster : MonoBehaviour {
             if (gameObject.GetComponent<MonsterMove>() != null)
                 rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * gameObject.GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
             else
-                rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * -2f, ForceMode.Impulse);
+                gameObject.GetComponent<FlyingMonsterPath>().enabled = true;
 
             forceadded = true;
             triggered = false;

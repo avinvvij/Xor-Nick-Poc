@@ -25,7 +25,7 @@ public class WaveAssignment : MonoBehaviour {
         wave_count = int.Parse(level_data["waves_count"].ToString());
         for (int i =1; i <= wave_count; i++)
         {
-            int r_color = UnityEngine.Random.Range(0, 2);
+            int r_color = UnityEngine.Random.Range(0, 3);
             for (int j = 0; j<level_data["wave"+i].Count; j++)
             {
                 Vector3 monster_pos = new Vector3( float.Parse(level_data["wave" + i][j]["position_x"].ToString()) , float.Parse(level_data["wave" + i][j]["position_y"].ToString()), float.Parse(level_data["wave" + i][j]["position_z"].ToString()));

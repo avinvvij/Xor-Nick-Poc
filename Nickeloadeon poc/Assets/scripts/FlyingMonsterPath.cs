@@ -21,13 +21,13 @@ public class FlyingMonsterPath : MonoBehaviour
     {
         
         last_position = transform.position;
+        makeNextMove();
     }
 
     // Update is called once per frame
     void Update()
     {
         float distance = Vector3.Distance(mypathmanager.points[currentwypointid].position, transform.position);
-        transform.position = Vector3.MoveTowards(transform.position, mypathmanager.points[currentwypointid].position, speed * Time.deltaTime);
 
         //var rotation = Quaternion.LookRotation(mypathmanager.points[currentwypointid].position - transform.position);
         //rotation = Quaternion.Euler(gameObject.transform.rotation.eulerAngles.x - 90f, rotation.eulerAngles.y, gameObject.transform.rotation.z);
@@ -36,12 +36,23 @@ public class FlyingMonsterPath : MonoBehaviour
         if (distance <= reachDist)
         {
             currentwypointid += 1;
+            makeNextMove();
         }
         if (currentwypointid == mypathmanager.points.Count)
         {
             
         }
 
+    }
+
+    private void makeNextMove()
+    {
+        Hashtable ht = new Hashtable();
+        ht.Add("x", mypathmanager.points[currentwypointid].position.x);
+        ht.Add("z", mypathmanager.points[currentwypointid].position.z);
+        ht.Add("speed", speed);
+        ht.Add("easetype", iTween.EaseType.linear);
+        iTween.MoveTo(gameObject, ht);
     }
 
     public void setpathManager( GameObject pathmanager) 
