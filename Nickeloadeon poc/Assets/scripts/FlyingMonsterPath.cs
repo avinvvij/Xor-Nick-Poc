@@ -27,8 +27,8 @@ public class FlyingMonsterPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(mypathmanager.points[currentwypointid].position, transform.position);
-
+        float distance = Vector3.Distance(new Vector3(mypathmanager.points[currentwypointid].position.x , 0f , mypathmanager.points[currentwypointid].position.z), new Vector3(transform.position.x ,0f, transform.position.z));
+        //Debug.Log(distance + " " + mypathmanager.points[currentwypointid].position + " " + transform.position) ;
         //var rotation = Quaternion.LookRotation(mypathmanager.points[currentwypointid].position - transform.position);
         //rotation = Quaternion.Euler(gameObject.transform.rotation.eulerAngles.x - 90f, rotation.eulerAngles.y, gameObject.transform.rotation.z);
         //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed);
