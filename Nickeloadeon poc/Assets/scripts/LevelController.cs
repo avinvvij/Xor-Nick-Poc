@@ -36,7 +36,7 @@ public class LevelController : MonoBehaviour {
 
     AudioSource back_audio;
     public AudioSource victory_sound , crowd_boo_sound;
-
+    public GameObject mechimvsbosspanel;
 
 
     //declaring variable for bullet , powers damage
@@ -301,14 +301,34 @@ public class LevelController : MonoBehaviour {
     }
     public void onPowersSelected()
     {
+        power_select_panel.GetComponent<AnimateUpgradePanel>().playDownAnimation();
+        if (PlayerPrefs.GetInt("level_no", 1) % 4 == 0)
+        {
+            mechimvsbosspanel.SetActive(true);
+            Invoke("bosspanelover" , 1.5f);
+        }else
+        {
+            Camera.main.GetComponent<Grayscale>().enabled = false;
+            Camera.main.GetComponent<BlurOptimized>().enabled = false;
+            pause_button.SetActive(true);
+            displayPowers();
+            level_text.text = "LEVEL " + level_no;
+            iTween.ShakePosition(level_text.gameObject, level_ht);
+            iTween.Resume(tank_player, true);
+        }
+    }
+
+    public void bosspanelover()
+    {
+        mechimvsbosspanel.GetComponent<AnimateUpgradePanel>().playDownAnimation();
         Camera.main.GetComponent<Grayscale>().enabled = false;
         Camera.main.GetComponent<BlurOptimized>().enabled = false;
         pause_button.SetActive(true);
         displayPowers();
         level_text.text = "LEVEL " + level_no;
+        power_select_panel.GetComponent<AnimateUpgradePanel>().playDownAnimation();
         iTween.ShakePosition(level_text.gameObject, level_ht);
         iTween.Resume(tank_player, true);
-        power_select_panel.GetComponent<AnimateUpgradePanel>().playDownAnimation();
     }
 
     public void displayPowers()
