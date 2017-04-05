@@ -50,12 +50,18 @@ public class LevelConfiguration : MonoBehaviour {
         }
 
         coin_count.text = configdata["coins_collected"].ToString();
-        for (int i = 0;i < int.Parse(configdata["level_reached"].ToString()) ; i++)
+        try
         {
-            button_names[i].transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
-            button_names[i].transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(false);
-            button_names[i].transform.GetChild(0).GetComponent<Button>().enabled = true;
-            tank.transform.position = button_names[i].GetComponent<RectTransform>().position - new Vector3(move_factor , 0.0f , 0.0f);
+            for (int i = 0; i < int.Parse(configdata["level_reached"].ToString()); i++)
+            {
+                button_names[i].transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
+                button_names[i].transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(false);
+                button_names[i].transform.GetChild(0).GetComponent<Button>().enabled = true;
+                tank.transform.position = button_names[i].GetComponent<RectTransform>().position - new Vector3(move_factor, 0.0f, 0.0f);
+            }
+        }catch(Exception e)
+        {
+
         }
 
         //playerprogess setup

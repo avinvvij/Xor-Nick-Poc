@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 45e9ec008cd08b94e9268b21b1f9e723
-timeCreated: 1488451376
+guid: 30c036308f021164f95bed16bf188a0e
+timeCreated: 1491373099
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: BlackChancery
+  fontName: Super Mario Bros.
   fontNames:
-  - BlackChancery
+  - Super Mario Bros.
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

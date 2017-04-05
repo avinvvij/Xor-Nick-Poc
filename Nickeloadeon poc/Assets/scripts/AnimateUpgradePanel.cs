@@ -67,5 +67,9 @@ public class AnimateUpgradePanel : MonoBehaviour {
     public void ondownanimationcomplete()
     {
         gameObject.transform.parent.gameObject.SetActive(false);
+        if(gameObject.name == "boss_details")
+        {
+            Camera.main.GetComponent<TouchCameraMover>().setCanScroll(true);
+        }
     }
 }
