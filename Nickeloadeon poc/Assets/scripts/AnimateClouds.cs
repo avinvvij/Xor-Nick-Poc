@@ -8,6 +8,7 @@ public class AnimateClouds : MonoBehaviour {
     Hashtable anim_ht , anim_seperate_ht;
     public float move_factor;
     public float time_factor;
+    public GameObject info_panel;
 
     public void Start()
     {
@@ -23,6 +24,7 @@ public class AnimateClouds : MonoBehaviour {
         anim_ht.Add("oncomplete", "cloudsanimated");
         if (async != null)
             anim_ht.Add("oncompleteparams", async);
+        info_panel.SetActive(true);
         GameObject.FindGameObjectWithTag("MainCanvas").SetActive(false);
         iTween.MoveTo(gameObject, anim_ht);
        
@@ -34,6 +36,7 @@ public class AnimateClouds : MonoBehaviour {
         anim_ht.Add("x", transform.position.x + move_factor);
         anim_ht.Add("time", time_factor);
         anim_ht.Add("easaetype", iTween.EaseType.linear);
+        info_panel.SetActive(true);
         iTween.MoveTo(gameObject, anim_ht);
     }
 
@@ -43,6 +46,7 @@ public class AnimateClouds : MonoBehaviour {
         anim_seperate_ht.Add("x", transform.position.x + move_x_factor);
         anim_seperate_ht.Add("time", time_factor);
         anim_seperate_ht.Add("easetype", iTween.EaseType.linear);
+        info_panel.SetActive(false);
         iTween.MoveTo(gameObject, anim_seperate_ht);    
     }
     
