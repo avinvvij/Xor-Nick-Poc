@@ -14,7 +14,6 @@ public class ManagePauseClick : MonoBehaviour {
         Camera.main.gameObject.GetComponent<AudioListener>().enabled = false;
         gameObject.GetComponent<Button>().enabled = false;
         level_controller = GameObject.FindGameObjectWithTag("LevelController");
-        level_controller.GetComponent<LevelController>().tank_canshoot = false;
         game_paused_panel.SetActive(true);
         game_paused_panel.GetComponent<AnimateUpgradePanel>().animateTheUpgradePanel();
         Camera.main.gameObject.GetComponent<Grayscale>().enabled = true;

@@ -41,7 +41,15 @@ public class ShootBullet : MonoBehaviour {
 
     public void makeashoot()
     {
-        if (canshoot && level_controller_script.tank_canshoot == true)
+        bool tank_can_shoot_status = true;
+        try
+        {
+            tank_can_shoot_status = level_controller.GetComponent<LevelController>().getTankShootStatus();
+        }catch(System.Exception e)
+        {
+            tank_can_shoot_status = level_controller.GetComponent<InfiniteLevelController>().getTankShootStatus();
+        }
+        if (canshoot && tank_can_shoot_status)
         {
             //print("ill shoot here");
             //print("" + transform.TransformDirection(gameObject.transform.position));
@@ -54,12 +62,20 @@ public class ShootBullet : MonoBehaviour {
 
             mybullet.GetComponent<Rigidbody>().AddForce(new Vector3(direction1.x , 0.0f , direction1.z)* 30 * bulletspeed, ForceMode.Impulse);
             tank_smoke.SetActive(true);
-           // shootray.origin = gameObject.transform.GetChild(0).transform.position;
-           // shootray.direction = direction;
+            // shootray.origin = gameObject.transform.GetChild(0).transform.position;
+            // shootray.direction = direction;
 
             //playing the sound
-            if(PlayerPrefs.GetInt("sound_effect" , 1) == 1)
-                shoot_audio.Play();
+            if (PlayerPrefs.GetInt("sound_effect", 1) == 1)
+            {
+                try
+                {
+                    shoot_audio.Play();
+                }catch(System.Exception e)
+                {
+
+                }
+            }
             Invoke("switchOffLight", 0.2f);
         }
         canshoot = !canshoot;

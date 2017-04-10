@@ -12,7 +12,15 @@ public class KillMonster : MonoBehaviour {
     {
         if((other.gameObject.tag == "monster" || other.gameObject.tag == "shootingmonster") && monsterkilled == false)
         {
-            damage_by_bullet = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>().getBulletDamage();
+            try
+            {
+                damage_by_bullet = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>().getBulletDamage();
+            }catch(System.Exception e)
+            {
+                damage_by_bullet = GameObject.FindGameObjectWithTag("LevelController").GetComponent<InfiniteLevelController>().getBulletDamage();
+
+            }
+            
             Instantiate(monsterhit_particle, new Vector3(other.gameObject.transform.position.x , other.gameObject.transform.position.y, other.gameObject.transform.position.z + 1f), other.transform.rotation);
             monsterkilled = true;
             //Destroy(other.gameObject);

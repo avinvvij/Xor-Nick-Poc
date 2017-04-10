@@ -72,7 +72,13 @@ public class MarbleAnimation : MonoBehaviour {
 
     public void onAnimToMarbleComplete()
     {
-        GameObject.FindGameObjectWithTag("marbles").GetComponent<ManageMarbleAnimation>().playAnimation();
+        try
+        {
+            GameObject.FindGameObjectWithTag("marbles").GetComponent<ManageMarbleAnimation>().playAnimation();
+        }catch(System.Exception e)
+        {
+
+        }
         marble_controller.GetComponent<MarbleScoreController>().add_to_marble_count(1);
         Destroy(gameObject);
 

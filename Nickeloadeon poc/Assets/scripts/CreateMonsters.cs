@@ -20,7 +20,7 @@ public class CreateMonsters : MonoBehaviour {
         {
             float randomx = Random.Range(-7.2f, 7.2f);
             int monsterselect = Random.Range(0, monsters.Length);
-            GameObject monster;
+            GameObject monster = null;
             switch (monsterselect) {
                 case 0:
                     monster = (GameObject)Instantiate(monsters[0], new Vector3(randomx, 2.21f, 15.6f), monsters[0].transform.rotation);
@@ -39,6 +39,7 @@ public class CreateMonsters : MonoBehaviour {
                     break;
 
             }
+            Destroy(monster.GetComponent<AudioSource>());
             createtime = Time.time + timeinterval;
         }
 	}

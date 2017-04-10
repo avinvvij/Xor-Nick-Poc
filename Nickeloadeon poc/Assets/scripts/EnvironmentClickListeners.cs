@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnvironmentClickListeners : MonoBehaviour {
     Ray ray;
     public GameObject monster_details;
-
 	// Use this for initialization
 	void Start () {
 		
@@ -26,6 +26,13 @@ public class EnvironmentClickListeners : MonoBehaviour {
                         monster_details.SetActive(true);
                         monster_details.transform.GetChild(1).GetComponent<AnimateUpgradePanel>().animateTheUpgradePanel();
                     }
+                    if(hit.collider.gameObject.name == "way_to_arcade" && Camera.main.gameObject.GetComponent<TouchCameraMover>().getCanScroll() == true)
+                    {
+                        AsyncOperation async = SceneManager.LoadSceneAsync(2);
+                        async.allowSceneActivation = (false);
+                        Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().AnimateTheClouds(async);
+                        Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().CloudJoinSimpleAnimation();
+                    }
                 }
             }
         }else
@@ -42,6 +49,13 @@ public class EnvironmentClickListeners : MonoBehaviour {
                         monster_details.SetActive(true);
                         monster_details.transform.GetChild(1).GetComponent<AnimateUpgradePanel>().animateTheUpgradePanel();
                         Camera.main.GetComponent<TouchCameraMover>().setCanScroll(false);
+                    }
+                    if (hit.collider.gameObject.name == "way_to_arcade" && Camera.main.gameObject.GetComponent<TouchCameraMover>().getCanScroll() == true)
+                    {
+                        AsyncOperation async = SceneManager.LoadSceneAsync(2);
+                        async.allowSceneActivation = (false);
+                        Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().AnimateTheClouds(async);
+                        Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().CloudJoinSimpleAnimation();
                     }
                 }
             }

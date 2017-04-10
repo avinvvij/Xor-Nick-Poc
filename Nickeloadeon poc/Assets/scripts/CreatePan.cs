@@ -69,7 +69,15 @@ public class CreatePan : MonoBehaviour {
 
     public void createPan()
     {
-        if (start_time < Time.time && marble_score.getMarbleCount() >= 5 && level_controller.GetComponent<LevelController>().getTankShootStatus() == true)
+        bool tank_shoot_status = true;
+        try
+        {
+            tank_shoot_status = level_controller.GetComponent<LevelController>().getTankShootStatus();
+        }catch(System.Exception e)
+        {
+            tank_shoot_status = level_controller.GetComponent<InfiniteLevelController>().getTankShootStatus();
+        }
+        if (start_time < Time.time && marble_score.getMarbleCount() >= 5 && tank_shoot_status)
         {
             generatepan = true;
             start_time = Time.time + time_interval;

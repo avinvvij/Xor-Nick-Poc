@@ -29,6 +29,7 @@ public class ToastHandler : MonoBehaviour {
                     {
                         toastExample.Call("showNotification");
                     }));
+                    
                 }
             }
         }

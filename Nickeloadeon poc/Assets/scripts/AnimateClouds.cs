@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class AnimateClouds : MonoBehaviour {
 
@@ -24,6 +25,7 @@ public class AnimateClouds : MonoBehaviour {
         anim_ht.Add("oncomplete", "cloudsanimated");
         if (async != null)
             anim_ht.Add("oncompleteparams", async);
+        info_panel.GetComponent<RectTransform>().GetChild(0).GetComponent<DifferentTips>().changeTip();
         info_panel.SetActive(true);
         GameObject.FindGameObjectWithTag("MainCanvas").SetActive(false);
         iTween.MoveTo(gameObject, anim_ht);
@@ -53,8 +55,10 @@ public class AnimateClouds : MonoBehaviour {
 	
     public void cloudsanimated(AsyncOperation async = null)
     {
-        if(async!=null)
+        if (async != null)
+        {
             async.allowSceneActivation = true;
+        }
     }
 
     public void setMoveFactor(float new_move_factor)

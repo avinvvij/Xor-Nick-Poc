@@ -28,9 +28,17 @@ public class MonsterHealthController : MonoBehaviour {
 
         if (this.health <= 0)
         {
-            if(PlayerPrefs.GetInt("sound_effect",1) == 1)
-                monster_death_sound.Play();
-            float x_factor = 0.0f;
+            if (PlayerPrefs.GetInt("sound_effect", 1) == 1)
+            {
+                try
+                {
+                    monster_death_sound.Play();
+                }catch(System.Exception e)
+                {
+
+                }
+            }
+                float x_factor = 0.0f;
             for(int i = 0; i < marbles_generated; i++)
             {
                 int marble_icon = Random.Range(0,3);
@@ -86,8 +94,15 @@ public class MonsterHealthController : MonoBehaviour {
             GetComponent<FlyingMonsterPath>().enabled = false;
         }
         if (PlayerPrefs.GetInt("sound_effect", 1) == 1)
-            monster_squeak_sound.Play();
+        {
+            try
+            {
+                monster_squeak_sound.Play();
+            }catch(System.Exception e)
+            {
 
+            }
+        }
         Invoke("stopBulletAnimation", 0.15f);
     }
 

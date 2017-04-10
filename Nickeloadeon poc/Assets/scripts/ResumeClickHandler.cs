@@ -14,13 +14,22 @@ public class ResumeClickHandler : MonoBehaviour {
     {
         Camera.main.gameObject.GetComponent<AudioListener>().enabled = true;
         pause_button.GetComponent<Button>().enabled = true;
-        level_controller = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
-        level_controller.displayPowers();
+        try
+        {
+            level_controller = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
+            level_controller.displayPowers();
+            level_controller.setGamePaused(false);
+            level_controller.tank_canshoot = true;
+        }catch(System.Exception e)
+        {
+            GameObject.FindGameObjectWithTag("LevelController").GetComponent<InfiniteLevelController>().displayPowers();
+            GameObject.FindGameObjectWithTag("LevelController").GetComponent<InfiniteLevelController>().setGamePaused(false);
+            GameObject.FindGameObjectWithTag("LevelController").GetComponent<InfiniteLevelController>().tank_canshoot = true;
+        }
         gameObject.transform.parent.gameObject.GetComponent<AnimateUpgradePanel>().playDownAnimation();
         Camera.main.gameObject.GetComponent<Grayscale>().enabled = false;
         Camera.main.gameObject.GetComponent<BlurOptimized>().enabled = false;
-        level_controller.setGamePaused(false);
-        level_controller.tank_canshoot = true;
+        
         Time.timeScale = 1;
     }
 }

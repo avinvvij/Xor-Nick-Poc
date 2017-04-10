@@ -39,7 +39,14 @@ public class WallHealthController : MonoBehaviour {
         }
 		if(wallhealth <= 0 && game_over == false)
         {
-            level_controller.GetComponent<LevelController>().display_GameoverPanel();
+            try
+            {
+                level_controller.GetComponent<LevelController>().display_GameoverPanel();
+            }
+            catch
+            {
+                level_controller.GetComponent<InfiniteLevelController>().display_GameoverPanel();
+            }
             game_over = true;
             for (int i = 0; i < crate_children.Length; i++)
             {

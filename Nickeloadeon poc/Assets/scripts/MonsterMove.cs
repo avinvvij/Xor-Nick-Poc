@@ -27,10 +27,7 @@ public class MonsterMove : MonoBehaviour {
             rb.velocity = Vector3.zero;
             gameObject.GetComponent<MonsterShoot>().enabled = true;
         }
-        if(levelcontroller.GetComponent<LevelController>().getGamePaused() == true)
-        {
-            rb.velocity = Vector3.zero;
-        }
+       
 
 
         if(gameObject.transform.position.x <= -7.1f)

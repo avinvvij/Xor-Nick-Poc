@@ -17,7 +17,13 @@ public class ManageHomeClick : MonoBehaviour {
     public void onYesClicked()
     {
         Time.timeScale = 1;
-        async = SceneManager.LoadSceneAsync(0);
+        try
+        {
+            async = SceneManager.LoadSceneAsync(0);
+        }catch(System.Exception e)
+        {
+
+        }
         async.allowSceneActivation = false;
         Camera.main.GetComponent<Grayscale>().enabled = false;
         Camera.main.GetComponent<BlurOptimized>().enabled = false;

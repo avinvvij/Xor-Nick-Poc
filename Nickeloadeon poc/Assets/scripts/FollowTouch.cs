@@ -15,7 +15,15 @@ public class FollowTouch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (level_controller.GetComponent<LevelController>().getTankShootStatus() == true)
+        bool tank_shoot_status = true;
+        try
+        {
+            tank_shoot_status = level_controller.GetComponent<LevelController>().getTankShootStatus();
+        }catch(System.Exception e)
+        {
+            tank_shoot_status = level_controller.GetComponent<InfiniteLevelController>().getTankShootStatus();
+        }
+        if (tank_shoot_status == true)
         {
             if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
             {
