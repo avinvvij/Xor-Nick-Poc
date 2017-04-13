@@ -95,6 +95,8 @@ public class CollisionMonster : MonoBehaviour {
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             if (gameObject.GetComponent<MonsterMove>() != null)
                 rb.AddForce(new Vector3(0.0f, 0.0f, 1f) * gameObject.GetComponent<MonsterMove>().getMonsterSpeed(), ForceMode.Impulse);
+            else if(gameObject.GetComponent<FlyingMonsterPathRandom>() != null)
+                gameObject.GetComponent<FlyingMonsterPathRandom>().enabled = true;
             else
                 gameObject.GetComponent<FlyingMonsterPath>().enabled = true;
 

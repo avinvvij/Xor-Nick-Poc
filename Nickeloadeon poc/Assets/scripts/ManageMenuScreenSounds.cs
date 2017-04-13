@@ -8,10 +8,11 @@ public class ManageMenuScreenSounds : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if(PlayerPrefs.GetInt("back_music" , 1) == 1)
+        if (PlayerPrefs.GetInt("back_music", 1) == 1)
         {
             background_music.Play();
-        }else
+        }
+        else
         {
             background_music.Pause();
         }

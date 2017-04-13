@@ -89,6 +89,9 @@ public class MonsterHealthController : MonoBehaviour {
         if (gameObject.name != "monster4_main")
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }else if(gameObject.GetComponent<FlyingMonsterPathRandom>()!=null)
+        {
+            GetComponent<FlyingMonsterPathRandom>().enabled = false;
         }else
         {
             GetComponent<FlyingMonsterPath>().enabled = false;
@@ -121,7 +124,10 @@ public class MonsterHealthController : MonoBehaviour {
         }
         else if(gameObject.GetComponent<CollisionCrate>().getcollisiontocrate() == false)
         {
-            GetComponent<FlyingMonsterPath>().enabled = true;
+            if (gameObject.GetComponent<FlyingMonsterPathRandom>() != null)
+                GetComponent<FlyingMonsterPathRandom>().enabled = true;
+            else
+                GetComponent<FlyingMonsterPath>().enabled = true;
         }
     }
 

@@ -39,7 +39,6 @@ public class CreateMonsters : MonoBehaviour {
                     break;
 
             }
-            Destroy(monster.GetComponent<AudioSource>());
             createtime = Time.time + timeinterval;
         }
 	}

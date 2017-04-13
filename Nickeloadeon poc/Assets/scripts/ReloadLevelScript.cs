@@ -33,13 +33,26 @@ public class ReloadLevelScript : MonoBehaviour {
 
     public void TakeToPreviousMenu()
     {
-        async = SceneManager.LoadSceneAsync(0);
-        async.allowSceneActivation = false;
-        Camera.main.GetComponent<Grayscale>().enabled = false;
-        Camera.main.GetComponent<BlurOptimized>().enabled = false;
-        Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().setMoveFactor(-15);
-        Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().AnimateTheClouds(async);
-        Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().setMoveFactor(15);
-        Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().CloudJoinSimpleAnimation();
+        if (PlayerPrefs.GetInt("level_no", 1) == 1000)
+        {
+            Camera.main.GetComponent<Grayscale>().enabled = false;
+            Camera.main.GetComponent<BlurOptimized>().enabled = false;
+            Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().setMoveFactor(-15);
+            Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().CloudJoinSimpleAnimation();
+            Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().setMoveFactor(15);
+            Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().CloudJoinSimpleAnimation();
+            Application.LoadLevel(0);
+        }
+        else
+        {
+            async = SceneManager.LoadSceneAsync(0);
+            async.allowSceneActivation = false;
+            Camera.main.GetComponent<Grayscale>().enabled = false;
+            Camera.main.GetComponent<BlurOptimized>().enabled = false;
+            Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().setMoveFactor(-15);
+            Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().AnimateTheClouds(async);
+            Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().setMoveFactor(15);
+            Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().CloudJoinSimpleAnimation();
+        }
     }
 }

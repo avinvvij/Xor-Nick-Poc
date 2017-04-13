@@ -22,15 +22,18 @@
 		</intent-filter>
 		<meta-data android:name="unityplayer.UnityActivity" android:value="true" />
 	</activity>
-  <service
+  
+  
+   <service
             android:name="com.vij_a.unittoastplugin.NotificationService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
-    <receiver
-              android:name="com.vij_a.unittoastplugin.AlarmReciever"
-              android:enabled="true"
-              android:exported="true"
-              android:process=":remote"></receiver>
+        <receiver
+            android:name="com.vij_a.unittoastplugin.AlarmReciever"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote"></receiver>
+
   </application>
 </manifest>

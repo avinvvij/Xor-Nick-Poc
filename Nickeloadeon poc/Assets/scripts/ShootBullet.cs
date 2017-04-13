@@ -42,13 +42,9 @@ public class ShootBullet : MonoBehaviour {
     public void makeashoot()
     {
         bool tank_can_shoot_status = true;
-        try
-        {
+      
             tank_can_shoot_status = level_controller.GetComponent<LevelController>().getTankShootStatus();
-        }catch(System.Exception e)
-        {
-            tank_can_shoot_status = level_controller.GetComponent<InfiniteLevelController>().getTankShootStatus();
-        }
+       
         if (canshoot && tank_can_shoot_status)
         {
             //print("ill shoot here");

@@ -28,7 +28,9 @@ public class EnvironmentClickListeners : MonoBehaviour {
                     }
                     if(hit.collider.gameObject.name == "way_to_arcade" && Camera.main.gameObject.GetComponent<TouchCameraMover>().getCanScroll() == true)
                     {
-                        AsyncOperation async = SceneManager.LoadSceneAsync(2);
+                        PlayerPrefs.SetInt("level_no", 1000);
+                        AsyncOperation async = SceneManager.LoadSceneAsync(1);
+                        
                         async.allowSceneActivation = (false);
                         Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().AnimateTheClouds(async);
                         Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().CloudJoinSimpleAnimation();
@@ -52,7 +54,8 @@ public class EnvironmentClickListeners : MonoBehaviour {
                     }
                     if (hit.collider.gameObject.name == "way_to_arcade" && Camera.main.gameObject.GetComponent<TouchCameraMover>().getCanScroll() == true)
                     {
-                        AsyncOperation async = SceneManager.LoadSceneAsync(2);
+                        PlayerPrefs.SetInt("level_no", 1000);
+                        AsyncOperation async = SceneManager.LoadSceneAsync(1);
                         async.allowSceneActivation = (false);
                         Camera.main.gameObject.transform.GetChild(0).GetComponent<AnimateClouds>().AnimateTheClouds(async);
                         Camera.main.gameObject.transform.GetChild(1).GetComponent<AnimateClouds>().CloudJoinSimpleAnimation();

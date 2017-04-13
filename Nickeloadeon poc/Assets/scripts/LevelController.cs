@@ -34,8 +34,8 @@ public class LevelController : MonoBehaviour {
     private bool gamepaused = false;
     public GameObject pause_button;
 
-    AudioSource back_audio;
-    public AudioSource victory_sound , crowd_boo_sound;
+   // AudioSource back_audio;
+    //public AudioSource victory_sound , crowd_boo_sound;
     public GameObject mechimvsbosspanel;
 
 
@@ -43,9 +43,26 @@ public class LevelController : MonoBehaviour {
     int damage_by_bullet, damage_by_chatter, damage_by_pan, damage_by_monsterfriend;
     int wall_health;
     JsonData progress_data;
+    public GameObject infinite_monster_controller, background_plane;
+    public Texture plane_infinite_texture , arena2_texture;
+
+    AudioSource back_audio;
+    public AudioSource victory_sound, crowd_boo_sound;
 
     // Use this for initialization
     void Start () {
+
+        //setting the background
+
+        if(PlayerPrefs.GetInt("level_no" , 1) == 1000)
+        {
+            background_plane.GetComponent<Renderer>().material.mainTexture= plane_infinite_texture;
+            background_plane.GetComponent<Renderer>().material.mainTextureScale = new Vector2(2.5f, 2.5f);
+        }else if(PlayerPrefs.GetInt("level_no",1)>=5 && PlayerPrefs.GetInt("level_no", 1) <= 8)
+        {
+            background_plane.GetComponent<Renderer>().material.mainTexture = arena2_texture;
+            background_plane.GetComponent<Renderer>().material.mainTextureScale = new Vector2(2.5f, 2.5f);
+        }
 
         //initializing damages
         progress_data = JsonMapper.ToObject(File.ReadAllText(Application.persistentDataPath + "\\playerprogress.json"));
@@ -84,7 +101,7 @@ public class LevelController : MonoBehaviour {
 
         //initializing sound
         back_audio = GetComponent<AudioSource>();
-        if(PlayerPrefs.GetInt("back_music",1) == 0)
+        if (PlayerPrefs.GetInt("back_music", 1) == 0)
         {
             back_audio.Stop();
         }
@@ -134,6 +151,8 @@ public class LevelController : MonoBehaviour {
             can_render_next = false;
             Invoke("render_next_wave", 1f);
         }
+
+        
     }
 
     public void setLevel_No(int new_level_no)
@@ -231,7 +250,7 @@ public class LevelController : MonoBehaviour {
         after_game_panel.SetActive(true);
         tank_canshoot = false;
         pause_button.SetActive(false);
-        if(after_game_text.text == "Victory")
+        if (after_game_text.text == "Victory")
         {
             if (PlayerPrefs.GetInt("sound_effect", 1) == 1)
             {
@@ -302,11 +321,21 @@ public class LevelController : MonoBehaviour {
     public void onPowersSelected()
     {
         power_select_panel.GetComponent<AnimateUpgradePanel>().playDownAnimation();
-        if (PlayerPrefs.GetInt("level_no", 1) % 4 == 0)
+        if (PlayerPrefs.GetInt("level_no",1) == 1000) {
+            infinite_monster_controller.SetActive(true);
+            tank_canshoot = true;
+            Camera.main.GetComponent<Grayscale>().enabled = false;
+            Camera.main.GetComponent<BlurOptimized>().enabled = false;
+            pause_button.SetActive(true);
+            displayPowers();
+            iTween.Resume(tank_player , true);
+        }
+        else if (PlayerPrefs.GetInt("level_no", 1) % 4 == 0)
         {
             mechimvsbosspanel.SetActive(true);
-            Invoke("bosspanelover" , 1.5f);
-        }else
+            Invoke("bosspanelover", 1.5f);
+        }
+        else
         {
             Camera.main.GetComponent<Grayscale>().enabled = false;
             Camera.main.GetComponent<BlurOptimized>().enabled = false;

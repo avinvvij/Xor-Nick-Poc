@@ -19,8 +19,16 @@ public class ManageHomeClick : MonoBehaviour {
         Time.timeScale = 1;
         try
         {
-            async = SceneManager.LoadSceneAsync(0);
-        }catch(System.Exception e)
+            SceneManager.UnloadScene(1);
+            if (PlayerPrefs.GetInt("level_no", 1) == 1000)
+            {
+                Application.LoadLevel(0);
+            }else
+            {
+                async = SceneManager.LoadSceneAsync(0);
+            }
+            
+        } catch(System.Exception e)
         {
 
         }

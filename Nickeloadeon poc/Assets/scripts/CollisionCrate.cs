@@ -20,6 +20,11 @@ public class CollisionCrate : MonoBehaviour {
                 gameObject.GetComponent<FlyingMonsterPath>().enabled = false;
                 iTween.Pause(gameObject);
             }
+            if (gameObject.GetComponent<FlyingMonsterPathRandom>() != null)
+            {
+                gameObject.GetComponent<FlyingMonsterPathRandom>().enabled = false;
+                iTween.Pause(gameObject);
+            }
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             gameObject.GetComponent<Rigidbody>().drag = 1000f;
             Animator anim = gameObject.transform.GetChild(0).GetComponent<Animator>();

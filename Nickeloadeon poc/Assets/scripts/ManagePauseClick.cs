@@ -9,7 +9,23 @@ public class ManagePauseClick : MonoBehaviour {
     public GameObject game_paused_panel;
     GameObject level_controller;
 
-	public void onPauseClicked()
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Camera.main.gameObject.GetComponent<AudioListener>().enabled = false;
+            gameObject.GetComponent<Button>().enabled = false;
+            level_controller = GameObject.FindGameObjectWithTag("LevelController");
+            game_paused_panel.SetActive(true);
+            game_paused_panel.GetComponent<AnimateUpgradePanel>().animateTheUpgradePanel();
+            Camera.main.gameObject.GetComponent<Grayscale>().enabled = true;
+            Camera.main.gameObject.GetComponent<BlurOptimized>().enabled = true;
+            Invoke("HidePowers", game_paused_panel.GetComponent<AnimateUpgradePanel>().time_factor);
+        }
+    }
+
+    public void onPauseClicked()
     {
         Camera.main.gameObject.GetComponent<AudioListener>().enabled = false;
         gameObject.GetComponent<Button>().enabled = false;
