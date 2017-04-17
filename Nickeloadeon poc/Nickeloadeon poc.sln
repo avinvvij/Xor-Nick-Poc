@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nickeloadeon poc.Plugins", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nickeloadeon poc", "Nickeloadeon poc.csproj", "{7A04A6BD-87D0-2A33-2FD3-FB360F7BC63A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nickeloadeon poc.Editor.Plugins", "Nickeloadeon poc.Editor.Plugins.csproj", "{443BAC80-85BA-A3C6-3D67-A44DA2198E5E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nickeloadeon poc.Editor", "Nickeloadeon poc.Editor.csproj", "{3B3030CC-30E3-819C-D1FB-3D55ECCBA2D8}"
 EndProject
 Global
@@ -21,6 +23,10 @@ Global
 		{7A04A6BD-87D0-2A33-2FD3-FB360F7BC63A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A04A6BD-87D0-2A33-2FD3-FB360F7BC63A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A04A6BD-87D0-2A33-2FD3-FB360F7BC63A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{443BAC80-85BA-A3C6-3D67-A44DA2198E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{443BAC80-85BA-A3C6-3D67-A44DA2198E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{443BAC80-85BA-A3C6-3D67-A44DA2198E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{443BAC80-85BA-A3C6-3D67-A44DA2198E5E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B3030CC-30E3-819C-D1FB-3D55ECCBA2D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3B3030CC-30E3-819C-D1FB-3D55ECCBA2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B3030CC-30E3-819C-D1FB-3D55ECCBA2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
