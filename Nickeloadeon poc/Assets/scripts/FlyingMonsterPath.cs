@@ -12,6 +12,9 @@ public class FlyingMonsterPath : MonoBehaviour
     public float reachDist = 0.05f;
     public float rotspeed = 0.5f;
     GameObject path;
+    Animator anim;
+    public bool isboss = false;
+    public float boss_shoot_time = 0.55f , boss_nextmove_time = 0.75f;
 
     Vector3 last_position;
     Vector3 current_position;
@@ -19,7 +22,7 @@ public class FlyingMonsterPath : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        anim = gameObject.transform.GetChild(0).GetComponent<Animator>();
         last_position = transform.position;
         makeNextMove();
     }
@@ -35,24 +38,40 @@ public class FlyingMonsterPath : MonoBehaviour
 
         if (distance <= reachDist)
         {
-            currentwypointid += 1;
-            makeNextMove();
+            if (isboss) {
+                currentwypointid = (currentwypointid + 1) % (mypathmanager.points.Count-1);
+                anim.SetBool("attack", true);
+                anim.speed = 6f;
+                Invoke("makeBossShoot", boss_shoot_time);
+                Invoke("makeNextMove", boss_nextmove_time);
+            } else
+            {
+                currentwypointid += 1;
+                makeNextMove();
+            }
         }
-        if (currentwypointid == mypathmanager.points.Count)
-        {
-            
-        }
+       
 
     }
 
     private void makeNextMove()
     {
+        if (isboss)
+        {
+            anim.SetBool("attack", false);
+            anim.speed = 3f;
+        }
         Hashtable ht = new Hashtable();
         ht.Add("x", mypathmanager.points[currentwypointid].position.x);
         ht.Add("z", mypathmanager.points[currentwypointid].position.z);
         ht.Add("speed", speed);
         ht.Add("easetype", iTween.EaseType.linear);
         iTween.MoveTo(gameObject, ht);
+    }
+
+    public void makeBossShoot()
+    {
+        gameObject.GetComponent<BossShoot>().makeAShoot();
     }
 
     public void setpathManager( GameObject pathmanager) 

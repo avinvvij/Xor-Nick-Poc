@@ -11,9 +11,5 @@ public class ManageAnimationSpeed : MonoBehaviour {
         anim = gameObject.transform.GetChild(0).GetComponent<Animator>();
         anim.speed = animspeed;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+   
 }

@@ -55,6 +55,20 @@ public class ShootBullet : MonoBehaviour {
             Vector3 direction1 = new Vector3(direction.normalized.x, 0.0f, direction.normalized.z);
             direction1 = direction1.normalized;
             GameObject mybullet = (GameObject)Instantiate(bullet, gameObject.transform.GetChild(0).transform.position,Quaternion.Euler(90f , 0.0f , 0.0f));
+            switch (level_controller.GetComponent<LevelController>().getBulletDamage())
+            {
+                case 10:
+                    mybullet.GetComponent<Renderer>().material.color = Color.red;
+                    break;
+                case 20:
+                    mybullet.GetComponent<Renderer>().material.color = Color.blue;
+                    break;
+                case 30:
+                    mybullet.GetComponent<Renderer>().material.color = Color.green;
+                    break;
+                case 40:
+                    break;
+            }
 
             mybullet.GetComponent<Rigidbody>().AddForce(new Vector3(direction1.x , 0.0f , direction1.z)* 30 * bulletspeed, ForceMode.Impulse);
             tank_smoke.SetActive(true);

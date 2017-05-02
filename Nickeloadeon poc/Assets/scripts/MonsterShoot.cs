@@ -7,6 +7,7 @@ public class MonsterShoot : MonoBehaviour {
     public GameObject monster_bullet;
     public float time_interval = 0.8f;
     float start_time = 0f;
+    public GameObject instantiate_position;
 
 
 	// Use this for initialization
@@ -19,7 +20,9 @@ public class MonsterShoot : MonoBehaviour {
 	void Update () {
 		if(start_time <= Time.time)
         {
-            Instantiate(monster_bullet, gameObject.transform.position+new Vector3(0f , 1.2f , 0f), monster_bullet.transform.rotation);
+                Instantiate(monster_bullet, gameObject.transform.position+new Vector3(0f , 1.2f , 0f), monster_bullet.transform.rotation);
+           
+            
             start_time = Time.time + time_interval;
         }
 	}

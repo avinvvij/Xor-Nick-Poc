@@ -37,7 +37,7 @@ public class LevelController : MonoBehaviour {
    // AudioSource back_audio;
     //public AudioSource victory_sound , crowd_boo_sound;
     public GameObject mechimvsbosspanel;
-
+    public Sprite stoney_sprite, aboman_sprite , yeti_sprite;
 
     //declaring variable for bullet , powers damage
     int damage_by_bullet, damage_by_chatter, damage_by_pan, damage_by_monsterfriend;
@@ -89,7 +89,7 @@ public class LevelController : MonoBehaviour {
         level_no = PlayerPrefs.GetInt("level_no",1);
         marble_controller = GameObject.FindGameObjectWithTag("marblecontroller");
         wall_health_controller = GameObject.FindGameObjectWithTag("wallhealthcontroller");
-
+        wall_health_controller.GetComponent<WallHealthController>().setWallHealth(wall_health);
         level_ht = new Hashtable();
         level_ht.Add("x", 50f);
         level_ht.Add("y", 50f);
@@ -332,7 +332,23 @@ public class LevelController : MonoBehaviour {
         }
         else if (PlayerPrefs.GetInt("level_no", 1) % 4 == 0)
         {
+            
             mechimvsbosspanel.SetActive(true);
+            switch (PlayerPrefs.GetInt("level_no", 1))
+            {
+                case 4:
+                    mechimvsbosspanel.transform.GetChild(0).transform.GetChild(2).GetComponent<Image>().sprite = stoney_sprite;
+                    mechimvsbosspanel.transform.GetChild(0).transform.GetChild(2).transform.GetChild(0).GetComponent<Text>().text = "STONEY";
+                    break;
+                case 8:
+                    mechimvsbosspanel.transform.GetChild(0).transform.GetChild(2).GetComponent<Image>().sprite = aboman_sprite;
+                    mechimvsbosspanel.transform.GetChild(0).transform.GetChild(2).transform.GetChild(0).GetComponent<Text>().text = "ABOMAN";
+                    break;
+                case 12:
+                    mechimvsbosspanel.transform.GetChild(0).transform.GetChild(2).GetComponent<Image>().sprite = yeti_sprite;
+                    mechimvsbosspanel.transform.GetChild(0).transform.GetChild(2).transform.GetChild(0).GetComponent<Text>().text = "ICE YETI";
+                    break;
+            }
             Invoke("bosspanelover", 1.5f);
         }
         else

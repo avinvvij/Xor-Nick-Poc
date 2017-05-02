@@ -14,6 +14,7 @@ public class MonsterHealthController : MonoBehaviour {
     AudioSource monster_death_sound;
     AudioSource monster_squeak_sound;
     GameObject monster_death_sound_gameobject;
+    bool max_health_set = false;
 	
 	void Start () {
         animation_handler = this.transform.GetChild(0).GetComponent<Animator>();
@@ -25,7 +26,6 @@ public class MonsterHealthController : MonoBehaviour {
 	
 	
 	void Update () {
-
         if (this.health <= 0)
         {
             if (PlayerPrefs.GetInt("sound_effect", 1) == 1)
@@ -81,6 +81,18 @@ public class MonsterHealthController : MonoBehaviour {
     public void setHealth(int new_health)
     {
         this.health = new_health;
+        try
+        {
+            if(max_health_set == false)
+            {
+                gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<Slider>().maxValue = new_health;
+                max_health_set = true;
+            }
+            gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<Slider>().value = new_health;
+        }catch(System.Exception e)
+        {
+
+        }
     }
 
     public void hitByBullet()

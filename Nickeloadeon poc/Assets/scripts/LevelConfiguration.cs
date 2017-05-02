@@ -17,7 +17,8 @@ public class LevelConfiguration : MonoBehaviour {
     public float move_factor = 1.2f;
     public Text coin_count;
     public GameObject attack_panel, defence_panel;
-    public GameObject[] power_panels; 
+    public GameObject[] power_panels;
+    public DisplayUpgradeAvailability upgradeavailability;
 
 	// Use this for initialization
 	void Start () {
@@ -86,6 +87,7 @@ public class LevelConfiguration : MonoBehaviour {
             power_panels[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).GetComponent<Text>().text = progress_data["powers"][i]["update_cost"].ToString();
             power_panels[i].transform.GetChild(0).transform.GetChild(0).transform.GetChild(4).GetComponent<Slider>().value = int.Parse(progress_data["powers"][i]["attack"].ToString());
         }
+        upgradeavailability.checkAvailability(configdata , progress_data);
     }
 	
 	

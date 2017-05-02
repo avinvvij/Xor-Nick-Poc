@@ -10,6 +10,8 @@ public class WallHealthController : MonoBehaviour {
     bool game_over = false;
     public GameObject gameover_particle;
     GameObject level_controller;
+    bool wall_health_set = false;
+    public Texture first_crate_texture, second_crate_texture;
 
 	// Use this for initialization
 	void Start () {
@@ -60,6 +62,25 @@ public class WallHealthController : MonoBehaviour {
     public void setWallHealth(int new_health)
     {
         this.wallhealth = new_health;
+        if(wall_health_set == false)
+        {
+            switch (wallhealth)
+            {
+                case 100:
+                    for (int i = 0; i < transform.childCount-1; i++)
+                    {
+                        gameObject.transform.GetChild(i).GetComponent<Renderer>().material.mainTexture = first_crate_texture;
+                    }
+                        break;
+                case 150:
+                    for (int i = 0; i < transform.childCount-1; i++)
+                    {
+                        gameObject.transform.GetChild(i).GetComponent<Renderer>().material.mainTexture = second_crate_texture;
+                    }
+                    break;
+            }
+            wall_health_set = true;
+        }
     }
 
 }

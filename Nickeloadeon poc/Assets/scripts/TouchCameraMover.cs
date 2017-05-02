@@ -12,7 +12,7 @@ public class TouchCameraMover : MonoBehaviour {
     private void Start()
     {
         camerainitialpos = Camera.main.transform.position;
-        finalpos = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 14.02f); 
+        finalpos = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 15.02f); 
     }
 
     public bool getCanScroll()
@@ -47,7 +47,7 @@ public class TouchCameraMover : MonoBehaviour {
                 // Do Stuff here
 
                 Vector3 CameraPos = Camera.main.transform.position;
-                if(CameraPos.z >= -13.5f && CameraPos.z <= 15f && canscroll == true)
+                if(CameraPos.z >= -13.5f && CameraPos.z <= 16f && canscroll == true)
                     Camera.main.transform.position = new Vector3(CameraPos.x, CameraPos.y, CameraPos.z + (delta.y * 0.05f));
                 
                 // End do stuff
@@ -60,7 +60,7 @@ public class TouchCameraMover : MonoBehaviour {
                 {
                     iTween.MoveTo(Camera.main.gameObject,camerainitialpos, 0.5f);
                 }
-                if (Camera.main.transform.position.z > 15f)
+                if (Camera.main.transform.position.z > 16f)
                 {
                     iTween.MoveTo(Camera.main.gameObject, finalpos, 0.5f);
                 }
@@ -86,7 +86,7 @@ public class TouchCameraMover : MonoBehaviour {
                         {
                             iTween.MoveTo(Camera.main.gameObject, camerainitialpos, 0.5f);
                         }
-                        if (Camera.main.transform.position.z > 15f)
+                        if (Camera.main.transform.position.z > 16f)
                         {
                             iTween.MoveTo(Camera.main.gameObject, finalpos, 0.5f);
                         }
@@ -97,7 +97,7 @@ public class TouchCameraMover : MonoBehaviour {
                         if (t.fingerId == scrolltouchId)
                         {
                             Vector3 CameraPos = Camera.main.transform.position;
-                            if (CameraPos.z >= -13.5f && CameraPos.z <= 15f)
+                            if (CameraPos.z >= -13.5f && CameraPos.z <= 16f)
                             {
                                 Camera.main.transform.position = new Vector3(CameraPos.x, CameraPos.y, CameraPos.z - (t.deltaPosition.y * 0.05f));
                             }

@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnvironmentClickListeners : MonoBehaviour {
     Ray ray;
     public GameObject monster_details;
+    public Text monster_name, monster_health, monster_description , monster_aps;
+    public Image monster_image;
+    public Sprite oldy_texture, stoney_texture , yeti_texture , devil_pic;
 	// Use this for initialization
 	void Start () {
 		
@@ -25,6 +29,8 @@ public class EnvironmentClickListeners : MonoBehaviour {
                     {
                         monster_details.SetActive(true);
                         monster_details.transform.GetChild(1).GetComponent<AnimateUpgradePanel>().animateTheUpgradePanel();
+                        Camera.main.GetComponent<TouchCameraMover>().setCanScroll(false);
+                        update_monster_details(hit.collider.gameObject.name);
                     }
                     if(hit.collider.gameObject.name == "way_to_arcade" && Camera.main.gameObject.GetComponent<TouchCameraMover>().getCanScroll() == true)
                     {
@@ -51,6 +57,7 @@ public class EnvironmentClickListeners : MonoBehaviour {
                         monster_details.SetActive(true);
                         monster_details.transform.GetChild(1).GetComponent<AnimateUpgradePanel>().animateTheUpgradePanel();
                         Camera.main.GetComponent<TouchCameraMover>().setCanScroll(false);
+                        update_monster_details(hit.collider.gameObject.name);
                     }
                     if (hit.collider.gameObject.name == "way_to_arcade" && Camera.main.gameObject.GetComponent<TouchCameraMover>().getCanScroll() == true)
                     {
@@ -64,4 +71,43 @@ public class EnvironmentClickListeners : MonoBehaviour {
             }
         }
 	}
+
+    public void update_monster_details(string monster_name_new)
+    {
+        
+        switch (monster_name_new)
+        {
+            case "stoney":
+                monster_name.text = "STONEY";
+                monster_health.text = "Health : 200";
+                monster_description.text = "A stone aged monster, highly durable to the bullets because of his stoned body. BEWARE!!!";
+                monster_aps.text = "attack per second : 10";
+                monster_image.sprite = stoney_texture;
+                break;
+            case "oldy_monster":
+                monster_name.text = "ABOMAN";
+                monster_health.text = "Health : 800";
+                monster_description.text = "The ABOMAN orignates from the time of early humans. Throws pointed spear towards your wall. Always carries that angry look on his face, maybe because of the burning volcano!!";
+                monster_aps.text = "attack per second : 30";
+                monster_image.sprite = oldy_texture;
+                monster_image.gameObject.transform.localScale = new Vector3(1f, 0.37f, 1.00001f);
+                break;
+            case "yeti_parent":
+                monster_name.text = "ICE YETI";
+                monster_health.text = "Health : 2000";
+                monster_description.text = "The big oval shaped yeti is too powerful. Has big hands to shoot those big snow balls at your wall. ";
+                monster_aps.text = "attack per second : 5";
+                monster_image.sprite = yeti_texture;
+                monster_image.gameObject.transform.localScale = new Vector3(1f, 0.37f, 1.00001f);
+                break;
+            case "devil_parent":
+                monster_name.text = "DEVIL";
+                monster_health.text = "Health : 2200";
+                monster_description.text = "The Devil directly comes from beneath the hell.";
+                monster_aps.text = "attack per second : 10";
+                monster_image.sprite = devil_pic;
+                monster_image.gameObject.transform.localScale = new Vector3(1f, 0.37f, 1.00001f);
+                break;
+        }
+    }
 }

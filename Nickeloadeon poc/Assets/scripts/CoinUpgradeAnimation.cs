@@ -13,6 +13,7 @@ public class CoinUpgradeAnimation : MonoBehaviour {
     JsonData coin_data, progress_data;
     public string type, data_name;
     public GameObject out_of_coins_panel;
+    public DisplayUpgradeAvailability upgradeavailability;
 
 	// Use this for initialization
 	void Start () {
@@ -78,6 +79,7 @@ public class CoinUpgradeAnimation : MonoBehaviour {
             out_of_coins_panel.SetActive(true);
             out_of_coins_panel.GetComponent<AnimateUpgradePanel>().animateTheUpgradePanel();
         }
+        upgradeavailability.checkAvailability(coin_data , progress_data);
     }
 
 

@@ -132,7 +132,6 @@
 		"position_x":"-6.8",
 		"position_y":"2.231399",
 		"position_z":"15.5",
-		"scale":{"x":"0.8530092","y":"0.5967351","z":"0.6191505"},
 		"health":"50",
 		"waypoint":[
 		{"x":"-6.77","y":"2.231399","z":"15.5"},
@@ -182,11 +181,13 @@
 		"waypoint_speed":"5"
 	},
 	{
-		"type":"3",
+		"type":"7",
 		"position_x":"7",
 		"position_y":"2.231399",
 		"position_z":"15.5",
-		"scale":{"x":"0.8530092","y":"0.5967351","z":"0.6191505"},
+		"isboss":"1",
+		"boss_shoot_time":"0.32",
+		"boss_nextmove_time":"0.40",
 		"health":"50",
 		"waypoint":[
 		{"x":"6.79","y":"2.231399","z":"14.45"},

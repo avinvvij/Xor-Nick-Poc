@@ -32,18 +32,7 @@ public class WaveAssignment : MonoBehaviour {
                 {
                     Vector3 monster_pos = new Vector3(float.Parse(level_data["wave" + i][j]["position_x"].ToString()), float.Parse(level_data["wave" + i][j]["position_y"].ToString()), float.Parse(level_data["wave" + i][j]["position_z"].ToString()));
                     GameObject temp_monster = (GameObject)Instantiate(monster_gameobjects[int.Parse(level_data["wave" + i][j]["type"].ToString())], monster_pos, monster_gameobjects[int.Parse(level_data["wave" + i][j]["type"].ToString())].transform.rotation);
-                    switch (r_color)
-                    {
-                        case 0:
-
-                            break;
-                        case 1:
-                            temp_monster.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.SetColor("_Color", new Color(0.341176f, 0.0980392157f, 0.662745098f));
-                            break;
-                        case 2:
-                            temp_monster.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.SetColor("_Color", new Color(0.0235294118f, 0.678431373f, 0f));
-                            break;
-                    }
+                    
                     //check if there is a waypoint system for monster
                     try
                     {
@@ -65,6 +54,33 @@ public class WaveAssignment : MonoBehaviour {
                         temp_monster.GetComponent<FlyingMonsterPath>().setpathManager(way_pointManager);
                         temp_monster.GetComponent<FlyingMonsterPath>().speed = float.Parse(level_data["wave" + i][j]["waypoint_speed"].ToString());
                         temp_monster.GetComponent<FlyingMonsterPath>().reachDist = 0.5f;
+                        try
+                        {
+                            if (int.Parse(level_data["wave" + i][j]["isboss"].ToString()) == 1)
+                            {
+                                temp_monster.GetComponent<FlyingMonsterPath>().isboss = true;
+                                temp_monster.GetComponent<FlyingMonsterPath>().boss_nextmove_time = float.Parse(level_data["wave" + i][j]["boss_nextmove_time"].ToString());
+                                temp_monster.GetComponent<FlyingMonsterPath>().boss_shoot_time = float.Parse(level_data["wave" + i][j]["boss_shoot_time"].ToString());
+                            }
+                        }catch(Exception e)
+                        {
+                            temp_monster.GetComponent<FlyingMonsterPath>().isboss = false;
+                        }
+                        if (temp_monster.GetComponent<FlyingMonsterPath>().isboss == false)
+                        {
+                            switch (r_color)
+                            {
+                                case 0:
+
+                                    break;
+                                case 1:
+                                    temp_monster.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.SetColor("_Color", new Color(0.341176f, 0.0980392157f, 0.662745098f));
+                                    break;
+                                case 2:
+                                    temp_monster.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.SetColor("_Color", new Color(0.0235294118f, 0.678431373f, 0f));
+                                    break;
+                            }
+                        }
                     }
                     catch (Exception e)
                     {
