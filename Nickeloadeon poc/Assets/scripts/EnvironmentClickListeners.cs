@@ -86,9 +86,9 @@ public class EnvironmentClickListeners : MonoBehaviour {
                 break;
             case "oldy_monster":
                 monster_name.text = "ABOMAN";
-                monster_health.text = "Health : 800";
+                monster_health.text = "Health : 400";
                 monster_description.text = "The ABOMAN orignates from the time of early humans. Throws pointed spear towards your wall. Always carries that angry look on his face, maybe because of the burning volcano!!";
-                monster_aps.text = "attack per second : 30";
+                monster_aps.text = "attack per spear : 2";
                 monster_image.sprite = oldy_texture;
                 monster_image.gameObject.transform.localScale = new Vector3(1f, 0.37f, 1.00001f);
                 break;

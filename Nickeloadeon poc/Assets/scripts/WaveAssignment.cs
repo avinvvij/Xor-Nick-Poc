@@ -101,6 +101,13 @@ public class WaveAssignment : MonoBehaviour {
                     }
                     catch (Exception e)
                     {
+                        temp_monster.GetComponent<WallDamageController>().setDamage_done(int.Parse(level_data["wave" + i][j]["damage_to_wall"].ToString()));
+                    }
+                    try
+                    {
+
+                    }catch(Exception e)
+                    {
 
                     }
                     temp_monster.transform.parent = wave_parents[i - 1].transform;

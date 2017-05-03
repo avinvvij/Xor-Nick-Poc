@@ -1,12 +1,84 @@
 {
-	"waves_count":"1",
+	"waves_count":"2",
 	"wave1":[
+	{
+	"type":"3",
+	"health":"30",
+	"position_x":"-7.2",
+	"position_y":"2.231399",
+	"position_z":"17.4"
+	},
+	{
+	"type":"3",
+	"health":"50",
+	"position_x":"-3.6",
+	"position_y":"2.231399",
+	"position_z":"20.6"
+	},
+	{
+	"type":"3",
+	"health":"30",
+	"position_x":"-0.3",
+	"position_y":"2.231399",
+	"position_z":"17.4"
+	},
+	{
+	"type":"3",
+	"health":"30",
+	"position_x":"4.3",
+	"position_y":"2.231399",
+	"position_z":"20"
+	},
+	{
+	"type":"3",
+	"health":"30",
+	"position_x":"7.7",
+	"position_y":"2.231399",
+	"position_z":"17.4"
+	},
+	{
+	"type":"3",
+	"health":"50",
+	"position_x":"-7.2",
+	"position_y":"2.231399",
+	"position_z":"23.6"
+	},
+	{
+	"type":"3",
+	"health":"30",
+	"position_x":"-3.6",
+	"position_y":"2.231399",
+	"position_z":"26.9"
+	},
+	{
+	"type":"3",
+	"health":"30",
+	"position_x":"-0.3",
+	"position_y":"2.231399",
+	"position_z":"23.7"
+	},
+	{
+	"type":"3",
+	"health":"30",
+	"position_x":"4.3",
+	"position_y":"2.231399",
+	"position_z":"26.3"
+	},
+	{
+	"type":"3",
+	"health":"30",
+	"position_x":"7.7",
+	"position_y":"2.231399",
+	"position_z":"23.7"
+	}
+	],
+	"wave2":[
 	{
 		"type":"6",
 		"position_x":"0.14551",
 		"position_y":"2.231399",
 		"position_z":"17.13",
-		"health":"800",
+		"health":"400",
 		"isboss":"1",
 		"boss_shoot_time":"0.55",
 		"boss_nextmove_time":"0.75",
@@ -17,6 +89,90 @@
 		{"x":"5.96","y":"2.231399","z":"3.94"},
 		{"x":"0.04","y":"2.231399","z":"3.94"},
 		{"x":"5.03","y":"2.231399","z":"10.63"}],
+		"waypoint_speed":"5"
+	},
+	{
+		"type":"3",
+		"position_x":"10.8",
+		"position_y":"2.231399",
+		"position_z":"-3.9",
+		"health":"30",
+		"damage_to_wall":"1",
+		"waypoint":[
+		{"x":"8.7","y":"2.231399","z":"-3.9"},
+		{"x":"-4.8","y":"2.231399","z":"-3.9"},
+		{"x":"-4.8","y":"2.231399","z":"-6.5"}
+		],
+		"waypoint_speed":"5"
+	},
+	{
+		"type":"3",
+		"position_x":"21",
+		"position_y":"2.231399",
+		"position_z":"-3.9",
+		"health":"30",
+		"damage_to_wall":"1",
+		"waypoint":[
+		{"x":"8.7","y":"2.231399","z":"-3.9"},
+		{"x":"7","y":"2.231399","z":"-3.9"},
+		{"x":"7","y":"2.231399","z":"-7.6"}
+		],
+		"waypoint_speed":"5"
+	},
+	{
+		"type":"3",
+		"position_x":"32.8",
+		"position_y":"2.231399",
+		"position_z":"-3.9",
+		"health":"30",
+		"damage_to_wall":"1",
+		"waypoint":[
+		{"x":"8.7","y":"2.231399","z":"-3.9"},
+		{"x":"-4.8","y":"2.231399","z":"-3.9"},
+		{"x":"-4.8","y":"2.231399","z":"-6.5"}
+		],
+		"waypoint_speed":"5"
+	},
+	{
+		"type":"3",
+		"position_x":"44.6",
+		"position_y":"2.231399",
+		"position_z":"-3.9",
+		"health":"30",
+		"damage_to_wall":"1",
+		"waypoint":[
+		{"x":"8.7","y":"2.231399","z":"-3.9"},
+		{"x":"7","y":"2.231399","z":"-3.9"},
+		{"x":"7","y":"2.231399","z":"-7.6"}
+		],
+		"waypoint_speed":"5"
+	},
+	{
+		"type":"3",
+		"position_x":"56.4",
+		"position_y":"2.231399",
+		"position_z":"-3.9",
+		"health":"30",
+		"damage_to_wall":"1",
+		"waypoint":[
+		{"x":"8.7","y":"2.231399","z":"-3.9"},
+		{"x":"-4.8","y":"2.231399","z":"-3.9"},
+		{"x":"-4.8","y":"2.231399","z":"-6.5"}
+		],
+		"waypoint_speed":"5"
+	},
+	{
+		"type":"3",
+		"position_x":"68.2",
+		"position_y":"2.231399",
+		"position_z":"-3.9",
+		"health":"30",
+		"damage_to_wall":"1",
+		"waypoint":[
+		{"x":"8.7","y":"2.231399","z":"-3.9"},
+		{"x":"7","y":"2.231399","z":"-3.9"},
+		{"x":"7","y":"2.231399","z":"-7.6"}
+		],
 		"waypoint_speed":"5"
 	}
 	]

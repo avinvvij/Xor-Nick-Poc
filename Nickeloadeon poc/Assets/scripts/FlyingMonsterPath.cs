@@ -39,7 +39,7 @@ public class FlyingMonsterPath : MonoBehaviour
         if (distance <= reachDist)
         {
             if (isboss) {
-                currentwypointid = (currentwypointid + 1) % (mypathmanager.points.Count-1);
+                currentwypointid = (currentwypointid + 1) % (mypathmanager.points.Count);
                 anim.SetBool("attack", true);
                 anim.speed = 6f;
                 Invoke("makeBossShoot", boss_shoot_time);
