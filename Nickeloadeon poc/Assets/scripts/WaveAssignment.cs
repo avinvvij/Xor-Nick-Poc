@@ -30,6 +30,7 @@ public class WaveAssignment : MonoBehaviour {
                 int r_color = UnityEngine.Random.Range(0, 3);
                 for (int j = 0; j < level_data["wave" + i].Count; j++)
                 {
+                    
                     Vector3 monster_pos = new Vector3(float.Parse(level_data["wave" + i][j]["position_x"].ToString()), float.Parse(level_data["wave" + i][j]["position_y"].ToString()), float.Parse(level_data["wave" + i][j]["position_z"].ToString()));
                     GameObject temp_monster = (GameObject)Instantiate(monster_gameobjects[int.Parse(level_data["wave" + i][j]["type"].ToString())], monster_pos, monster_gameobjects[int.Parse(level_data["wave" + i][j]["type"].ToString())].transform.rotation);
                     
@@ -86,7 +87,7 @@ public class WaveAssignment : MonoBehaviour {
                     {
 
                     }
-
+                    
                     try
                     {
                         temp_monster.transform.localScale = new Vector3(float.Parse(level_data["wave" + i][j]["scale"]["x"].ToString()), float.Parse(level_data["wave" + i][j]["scale"]["y"].ToString()), float.Parse(level_data["wave" + i][j]["scale"]["z"].ToString()));
@@ -101,12 +102,13 @@ public class WaveAssignment : MonoBehaviour {
                     }
                     catch (Exception e)
                     {
-                        temp_monster.GetComponent<WallDamageController>().setDamage_done(int.Parse(level_data["wave" + i][j]["damage_to_wall"].ToString()));
+                        
                     }
                     try
                     {
-
-                    }catch(Exception e)
+                        temp_monster.GetComponent<WallDamageController>().setDamage_done(int.Parse(level_data["wave" + i][j]["damage_to_wall"].ToString()));
+                    }
+                    catch(Exception e)
                     {
 
                     }

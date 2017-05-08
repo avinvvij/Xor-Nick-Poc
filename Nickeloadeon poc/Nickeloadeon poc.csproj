@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugin\HockeyAppUnityAndroid\HockeyAppUnity-Scripts\HockeyAppAndroid.cs" />
+    <Compile Include="Assets\RotateDevilRing.cs" />
     <Compile Include="Assets\SimpleAndroidNotifications\NotificationExample.cs" />
     <Compile Include="Assets\SimpleAndroidNotifications\NotificationIcon.cs" />
     <Compile Include="Assets\SimpleAndroidNotifications\NotificationManager.cs" />

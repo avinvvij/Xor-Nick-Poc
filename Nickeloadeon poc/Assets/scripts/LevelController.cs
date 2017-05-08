@@ -33,6 +33,7 @@ public class LevelController : MonoBehaviour {
     public RectTransform[] display_positions;
     private bool gamepaused = false;
     public GameObject pause_button;
+    public GameObject snow_fall;
 
    // AudioSource back_audio;
     //public AudioSource victory_sound , crowd_boo_sound;
@@ -51,9 +52,9 @@ public class LevelController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        snow_fall.SetActive(false);
 
         //setting the background
-
         if(PlayerPrefs.GetInt("level_no" , 1) == 1000)
         {
             background_plane.GetComponent<Renderer>().material.mainTexture= plane_infinite_texture;
@@ -62,6 +63,12 @@ public class LevelController : MonoBehaviour {
         {
             background_plane.GetComponent<Renderer>().material.mainTexture = arena2_texture;
             background_plane.GetComponent<Renderer>().material.mainTextureScale = new Vector2(2.5f, 2.5f);
+        }
+        else if(PlayerPrefs.GetInt("level_no" , 1)>=9 && PlayerPrefs.GetInt("level_no", 1) <= 12)
+        {
+            background_plane.GetComponent<Renderer>().material.mainTexture = plane_infinite_texture;
+            background_plane.GetComponent<Renderer>().material.mainTextureScale = new Vector2(2.5f, 2.5f);
+            snow_fall.SetActive(true);
         }
 
         //initializing damages
